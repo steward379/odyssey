@@ -1,0 +1,148 @@
+*, *:before, *:after {
+   box-sizing: border-box;
+}
+body, h1 {
+  font-size: 20px;
+}
+h2 {
+  font-size: 40px;
+}
+navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 10px;
+}
+.nav-item {
+  padding: 10px;
+}
+svg {
+  display: none;
+}
+ul {
+  display: flex;
+  margin: 0;
+  list-style: none;
+}
+jumbotron {
+  background: lightblue;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer {
+  margin-top: 5vh;
+  height: 20vh;
+  background: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.foto-thumbnail {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 1200px;
+  margin-top: 30px;
+  gap: 20px 20px;
+  margin-bottom: 20px;
+}
+.thumbnail-li {
+  display: flex;
+  align-items: center;
+  background: lightblue;
+  flex-grow: 1;
+  max-height: 50px;
+}
+.thumbnail-img {
+  object-fit: cover;
+}
+.thumbnail-title {
+  padding: 10px;
+}
+.profile-img {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+}
+.foto-profile {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 1200px;
+  gap: 20px 20px;
+}
+.profile-li {
+  background: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+  width: 13%;
+  height: 300px;
+}
+.profile-title {
+  flex-grow: 1;
+  display: flex; 
+  align-items: center;
+}
+@media(max-width: 1200px){
+  .foto-thumbnail{
+    width: 90%;
+  }
+  .foto-profile{
+    width: 90%;
+  }
+}
+@media(min-width: 600px) and (max-width: 1200px){ 
+  .thumbnail-li {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 41%;
+  }
+  .thumbnail-li-3{
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis: 0%;
+  }
+  .profile-li {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 20%;
+  }
+}
+@media(min-width: 360px) and (max-width: 600px){ 
+  .nav-list {
+    display: none;
+  }
+  svg {
+    display: flex;
+  }  
+  .thumbnail-li {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+  }
+  .thumbnail-li-3 {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+  }
+  .profile-li {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+  }
+}
