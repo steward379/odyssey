@@ -1,148 +1,154 @@
 *, *:before, *:after {
-   box-sizing: border-box;
+  box-sizing: border-box;
 }
-body, h1 {
+
+body {
   font-size: 20px;
 }
+
 h2 {
   font-size: 40px;
 }
-navbar {
+
+ul {
   display: flex;
-  justify-content: space-between;
+  list-style: none;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   height: 50px;
   padding: 10px;
 }
-.nav-item {
+nav .nav-item {
   padding: 10px;
 }
-svg {
+nav .hamburgur-menu {
   display: none;
 }
-ul {
-  display: flex;
-  margin: 0;
-  list-style: none;
-}
+
 jumbotron {
-  background: lightblue;
-  height: 250px;
+  background-color: lightblue;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 250px;
 }
+
 main {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
+
 footer {
-  margin-top: 5vh;
-  height: 20vh;
-  background: lightgray;
+  background-color: lightblue;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  margin-top: 50px;
+  height: 50px;
 }
-.foto-thumbnail {
+
+.photo-thumbnail {
   display: flex;
+  justify-content: center;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 1200px;
-  margin-top: 30px;
-  gap: 20px 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
+  gap: 20px 20px;
 }
-.thumbnail-li {
+.photo-thumbnail .thumbnail-li {
+  background-color: lightblue;
   display: flex;
+  justify-content: center;
   align-items: center;
-  background: lightblue;
+  justify-content: flex-start;
   flex-grow: 1;
   max-height: 50px;
 }
-.thumbnail-img {
+.photo-thumbnail .thumbnail-li .thumbnail-img {
   object-fit: cover;
 }
-.thumbnail-title {
+.photo-thumbnail .thumbnail-li .thumbnail-title {
   padding: 10px;
 }
-.profile-img {
+
+.photo-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 1200px;
+  gap: 20px 20px;
+}
+.photo-profile .profile-li {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1 1 15%;
+  height: 300px;
+}
+.photo-profile .profile-li .profile-img {
   width: 100%;
   object-fit: cover;
   height: 200px;
 }
-.foto-profile {
+.photo-profile .profile-li .profile-title {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 1200px;
-  gap: 20px 20px;
-}
-.profile-li {
-  background: lightblue;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-grow: 1;
-  width: 13%;
-  height: 300px;
 }
-.profile-title {
-  flex-grow: 1;
-  display: flex; 
-  align-items: center;
-}
-@media(max-width: 1200px){
-  .foto-thumbnail{
-    width: 90%;
-  }
-  .foto-profile{
+
+@media (max-width: 1200px) {
+  .photo-thumbnail, .photo-profile {
     width: 90%;
   }
 }
-@media(min-width: 600px) and (max-width: 1200px){ 
-  .thumbnail-li {
+@media (min-width: 600px) and (max-width: 1200px) {
+  .photo-thumbnail .thumbnail-li {
     display: flex;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 41%;
+    flex: 1 1 45%;
   }
-  .thumbnail-li-3{
-    flex-grow: 2;
-    flex-shrink: 1;
-    flex-basis: 0%;
+  .photo-thumbnail .thumbnail-li-3 {
+    flex: 2 1 0;
   }
-  .profile-li {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 20%;
+
+  .photo-profile .profile-li {
+    flex: 1 1 20%;
   }
 }
-@media(min-width: 360px) and (max-width: 600px){ 
+@media (min-width: 360px) and (max-width: 600px) {
   .nav-list {
     display: none;
   }
-  svg {
+
+  nav .hamburgur-menu {
     display: flex;
-  }  
-  .thumbnail-li {
-    display: flex;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 50%;
   }
-  .thumbnail-li-3 {
+
+  .photo-thumbnail .thumbnail-li {
     display: flex;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 50%;
+    flex: 1 1 50%;
   }
-  .profile-li {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 50%;
+  .photo-thumbnail .thumbnail-li-3 {
+    display: flex;
+    flex: 1 1 50%;
+  }
+
+  .photo-profile .profile-li {
+    flex: 1 1 50%;
   }
 }

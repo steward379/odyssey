@@ -1,0 +1,158 @@
+*, *:before, *:after {
+   box-sizing: border-box;
+}
+@mixin flexJustify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin background {
+  background-color: lightblue;
+}
+$fontSize: 20px;
+$jumbotronHeight: 250px;
+$navHeight: 50px;
+$mainWidth: 1200px;
+$gapSize: 20px;
+$profileHeight: 300px;
+$profileImageHeight: 200px;
+
+body {
+  font-size: $fontSize;
+}
+h2 {
+  font-size: $fontSize*2;
+}
+ul {
+  display: flex;
+  list-style: none;
+}
+nav {
+  @include flexJustify;
+  justify-content: space-between;
+  height: $navHeight;
+  padding: $fontSize/2;
+  
+  .nav-item {
+    padding: $fontSize/2;
+  }
+  .hamburgur-menu {
+    display: none;
+  }
+}
+jumbotron {
+  @include background;
+  @include flexJustify;
+  height: $jumbotronHeight;
+}
+main {
+  @include flexJustify;
+  flex-direction: column;
+}
+footer {
+  @include background;
+  @include flexJustify;
+  margin-top: $navHeight;
+  height: $navHeight;
+}
+.photo-thumbnail {
+  @include flexJustify;
+  
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: $mainWidth;
+  margin-top: $navHeight;
+  margin-bottom: $gapSize;
+  gap: $gapSize $gapSize;
+  
+  .thumbnail-li {
+    @include background;
+    @include flexJustify;
+
+    justify-content: flex-start;
+    flex-grow: 1;
+    max-height: $navHeight;
+
+    .thumbnail-img {
+      object-fit: cover;
+    }
+    .thumbnail-title {
+      padding: $fontSize/2;
+    }
+  }
+}
+
+.photo-profile {
+  @include flexJustify;
+  
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: $mainWidth;
+  gap: $gapSize $gapSize;
+  
+  .profile-li {
+    @include background;
+    @include flexJustify;
+    
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 15%;
+    height: $profileHeight;
+    
+    .profile-img {
+      width: 100%;
+      object-fit: cover;
+      height: $profileImageHeight;
+    }
+    .profile-title {
+      @include flexJustify;
+    
+      flex-grow: 1;
+    }
+  }
+}
+
+@media(max-width: 1200px){
+  .photo-thumbnail, .photo-profile{
+    width: 90%;
+  }
+}
+@media(min-width: 600px) and (max-width: 1200px){ 
+  .photo-thumbnail {
+    .thumbnail-li {
+      display: flex;
+      flex: 1 1 45%;
+    }
+    .thumbnail-li-3{
+      flex: 2 1 0;
+    }
+  } 
+  .photo-profile {
+    .profile-li {
+      flex: 1 1 20%;
+    }
+  }
+}
+@media(min-width: 360px) and (max-width: 600px){ 
+  .nav-list {
+    display: none;
+  }
+  nav .hamburgur-menu {
+    display: flex;
+  }  
+  .photo-thumbnail {
+    .thumbnail-li {
+      display: flex;
+      flex: 1 1 50%;
+    }
+    .thumbnail-li-3 {
+      display: flex;
+      flex: 1 1 50%;
+    }
+  }
+  .photo-profile {
+    .profile-li {
+      flex: 1 1 50%;
+    }
+  }
+}
