@@ -33,12 +33,12 @@ nav {
   justify-content: space-between;
   align-items: start;
   height: $navHeight;
-  padding: 0 $fontSize/2;
 
   h1 {
     --height: 50px;
     --font-size: 20px;
     margin-top: calc(var(--height)/2 - var(--font-size)/2);
+    padding: 0 $fontSize/2;
   }
   
   #hamburger-menu-click {
@@ -63,6 +63,7 @@ nav {
   .nav-list {
     display: flex;
     transition: all .3s;
+    padding: 0 $fontSize/2;
     
     .nav-item {
       padding: $fontSize/2;
@@ -75,7 +76,7 @@ nav {
     display: none;
   }
   #hamburger-menu-click:checked + .hamburger-menu-label .xmark {
-   display: block;
+    display: block;
     position: fixed;
     right: 20px;
     z-index: 2;
@@ -90,15 +91,17 @@ nav {
     box-shadow: 0 3px 5px rgba(0, 0, 0 , .1);
     padding-top: 50px;
     transition: all .3s;
-    positon: absolute;
+    position: absolute;
     z-index: 1;
     
     .nav-item {
-      border: 2px solid #fff;
+      width: 100%;
+      text-align: center;
+      padding: 15px 0;
     }
   }
 }
-jumbotron {
+.jumbotron {
   @include background;
   @include flexJustify;
   height: $jumbotronHeight;
@@ -129,11 +132,13 @@ footer {
 
     justify-content: flex-start;
     flex-grow: 1;
-    max-height: $navHeight;
+    height: $navHeight;
+    overflow: hidden;
 
-    .thumbnail-img {
-      object-fit: cover;
-    }
+      .thumbnail-img {
+        object-fit: cover;
+        width: 80px;
+      }
     .thumbnail-title {
       padding: $fontSize/2;
     }
@@ -169,7 +174,12 @@ footer {
       }
       .star {
         position: absolute;
-        right: 0;
+        right: 3px;
+        top: 5px;
+
+        :hover {
+          fill: yellow;
+        }
       }
     }
     .profile-title {
@@ -212,7 +222,7 @@ footer {
       flex: 1 1 45%;
     }
     .thumbnail-li-3{
-      flex: 2 1 0;
+      flex: 2 1 100%;
     }
   } 
   .photo-profile {
