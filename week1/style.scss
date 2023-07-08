@@ -29,15 +29,73 @@ ul {
 }
 nav {
   @include flexJustify;
+
   justify-content: space-between;
+  align-items: start;
   height: $navHeight;
-  padding: $fontSize/2;
-  
-  .nav-item {
-    padding: $fontSize/2;
+  padding: 0 $fontSize/2;
+
+  h1 {
+    --height: 50px;
+    --font-size: 20px;
+    margin-top: calc(var(--height)/2 - var(--font-size)/2);
   }
-  .hamburger-menu {
+  
+  #hamburger-menu-click {
     display: none;
+  }
+  
+  .hamburger-menu-label {
+    @include flexJustify;
+    position: relative;
+    
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    
+    .hamburger-menu {
+      display: none;
+    }
+    .xmark {
+      display: none;
+    }
+  }
+  .nav-list {
+    display: flex;
+    transition: all .3s;
+    
+    .nav-item {
+      padding: $fontSize/2;
+      --height: 50px;
+      --font-size: 20px;
+      padding-top:  calc(var(--height)/2 - var(--font-size)/2);
+    }
+  }
+  #hamburger-menu-click:checked + .hamburger-menu-label .hamburger-menu {
+    display: none;
+  }
+  #hamburger-menu-click:checked + .hamburger-menu-label .xmark {
+   display: block;
+    position: fixed;
+    right: 20px;
+    z-index: 2;
+  }
+  #hamburger-menu-click:checked ~ .nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    background: lightgrey;
+    box-shadow: 0 3px 5px rgba(0, 0, 0 , .1);
+    padding-top: 50px;
+    transition: all .3s;
+    positon: absolute;
+    z-index: 1;
+    
+    .nav-item {
+      border: 2px solid #fff;
+    }
   }
 }
 jumbotron {
@@ -96,18 +154,48 @@ footer {
     
     flex-direction: column;
     justify-content: flex-start;
-    flex: 1 1 15%;
     height: $profileHeight;
+    flex: 1 1 15%;
     
     .profile-img {
+      position: relative;
+      min-height: $profileImageHeight;
       width: 100%;
-      object-fit: cover;
-      height: $profileImageHeight;
+      
+      .main {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .star {
+        position: absolute;
+        right: 0;
+      }
     }
     .profile-title {
-      @include flexJustify;
-    
-      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-size: cover;
+      background-image: url("http://placekitten.com/100/101");
+      width: 100%;
+      height: 100%;
+      
+      ::after {
+        content: "";
+        position: absolute;
+        background-color: rgba(255, 230, 255, 0.5);
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      span {
+        @include flexJustify;
+        
+        flex-grow: 1;
+        z-index: 1;
+      }
     }
   }
 }
@@ -133,13 +221,28 @@ footer {
     }
   }
 }
-@media(min-width: 360px) and (max-width: 600px){ 
-  .nav-list {
-    display: none;
+
+@media(min-width: 600px) and (max-width: 880px){ 
+  .photo-profile {
+    .profile-li {
+      flex: 1 1 40%;
+    }
   }
-  nav .hamburger-menu {
-    display: flex;
-  }  
+}
+
+@media(min-width: 360px) and (max-width: 600px){ 
+  
+  nav {
+    .hamburger-menu-label {    
+      .hamburger-menu {
+        display: block;
+      }
+    }
+    .nav-list {
+      display: none;
+    }
+  }
+  
   .photo-thumbnail {
     .thumbnail-li {
       display: flex;
@@ -156,3 +259,4 @@ footer {
     }
   }
 }
+

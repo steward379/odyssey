@@ -20,16 +20,78 @@ nav {
   justify-content: center;
   align-items: center;
   justify-content: space-between;
+  align-items: start;
   height: 50px;
-  padding: 10px;
+  padding: 0 10px;
 }
 
-nav .nav-item {
-  padding: 10px;
+nav h1 {
+  --height: 50px;
+  --font-size: 20px;
+  margin-top: calc(var(--height)/2 - var(--font-size)/2);
 }
 
-nav .hamburger-menu {
+nav #hamburger-menu-click {
   display: none;
+}
+
+nav .hamburger-menu-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+nav .hamburger-menu-label .hamburger-menu {
+  display: none;
+}
+
+nav .hamburger-menu-label .xmark {
+  display: none;
+}
+
+nav .nav-list {
+  display: flex;
+  transition: all .3s;
+}
+
+nav .nav-list .nav-item {
+  padding: 10px;
+  --height: 50px;
+  --font-size: 20px;
+  padding-top: calc(var(--height)/2 - var(--font-size)/2);
+}
+
+nav #hamburger-menu-click:checked + .hamburger-menu-label .hamburger-menu {
+  display: none;
+}
+
+nav #hamburger-menu-click:checked + .hamburger-menu-label .xmark {
+  display: block;
+  position: fixed;
+  right: 20px;
+  z-index: 2;
+}
+
+nav #hamburger-menu-click:checked ~ .nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  background: lightgrey;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  padding-top: 50px;
+  transition: all .3s;
+  positon: absolute;
+  z-index: 1;
+}
+
+nav #hamburger-menu-click:checked ~ .nav-list .nav-item {
+  border: 2px solid #fff;
 }
 
 jumbotron {
@@ -103,21 +165,53 @@ footer {
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  flex: 1 1 15%;
   height: 300px;
+  flex: 1 1 15%;
 }
 
 .photo-profile .profile-li .profile-img {
+  position: relative;
+  min-height: 200px;
   width: 100%;
+}
+
+.photo-profile .profile-li .profile-img .main {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  height: 200px;
+}
+
+.photo-profile .profile-li .profile-img .star {
+  position: absolute;
+  right: 0;
 }
 
 .photo-profile .profile-li .profile-title {
   display: flex;
+  flex-direction: column;
+  position: relative;
+  background-size: cover;
+  background-image: url("http://placekitten.com/100/101");
+  width: 100%;
+  height: 100%;
+}
+
+.photo-profile .profile-li .profile-title ::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 230, 255, 0.5);
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.photo-profile .profile-li .profile-title span {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  z-index: 1;
 }
 
 @media (max-width: 1200px) {
@@ -139,12 +233,18 @@ footer {
   }
 }
 
-@media (min-width: 360px) and (max-width: 600px) {
-  .nav-list {
-    display: none;
+@media (min-width: 600px) and (max-width: 880px) {
+  .photo-profile .profile-li {
+    flex: 1 1 40%;
   }
-  nav .hamburger-menu {
-    display: flex;
+}
+
+@media (min-width: 360px) and (max-width: 600px) {
+  nav .hamburger-menu-label .hamburger-menu {
+    display: block;
+  }
+  nav .nav-list {
+    display: none;
   }
   .photo-thumbnail .thumbnail-li {
     display: flex;
