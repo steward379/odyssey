@@ -16,8 +16,9 @@ function findAndPrint(messages){
             }
         }
         
-        if(Object.values(messages)[i].includes('college') ||
-           Object.values(messages)[i].includes('legal') || 
+        if(Object.values(messages)[i].includes("college") ||
+           Object.values(messages)[i].includes("legal") || 
+           Object.values(messages)[i].includes("vote")
            ageMature(messages)){
                 console.log(Object.keys(messages)[i]);
                 keyOutcome.push(Object.keys(messages)[i]);

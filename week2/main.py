@@ -3,11 +3,11 @@ print( "========= Task 1 =========")
 
 def find_and_print(messages):
     # value 包含 >17 的數字、college 與 legal 就印出相應的 key
-    
+
     key_outcome = []
 
     for k, v in messages.items():
-        if 'college' in v or 'legal' in v:
+        if 'college' in v or 'legal' in v or 'vote' in v:
             print(k)
             key_outcome.append(k)
         for age in range(18, 200):
@@ -155,7 +155,7 @@ def get_number(index):
             array.append(i + odd_count)
             odd_count += 1
 
-    # print(array)
+    print(array)
     print(array[index])
     return array[index]
 get_number(1) # print 4
