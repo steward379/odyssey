@@ -196,7 +196,7 @@ function getNumber(index){
         
     }
     // console.log(array);
-    console.log(array[index]);/
+    console.log(array[index]);
     return array[index];
 }
 getNumber(1); // print 4 
