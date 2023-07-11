@@ -24,7 +24,7 @@ function findAndPrint(messages){
         }
     }
     console.log(keyOutcome);    
-    return keyOutcome;
+    return keyOutcome.join(", ");
 } 
 findAndPrint(
     {
@@ -52,6 +52,7 @@ function calculateSumOfBonus(data) {
     const totalBonus = 10000;
     let totalBonusPrimitive = 0;
     let totalBonusSpent = 0;
+    let returnData = [];
 
     //另外設定一陣列儲存獎金
     let employeeBonuses = [];
@@ -77,6 +78,7 @@ function calculateSumOfBonus(data) {
 
     const scaleRatio = totalBonus / totalBonusPrimitive;
     console.log(`👉 scaleRatio: ${scaleRatio}`);
+    returnData.push(`👉 scaleRatio: ${scaleRatio}`);
 
     for (let i = 0; i < totalEmployeesCount; i++) {
         const { name, rate, bonusPrimitive } = employeeBonuses[i]; // 解構賦值
@@ -85,8 +87,14 @@ function calculateSumOfBonus(data) {
         totalBonusSpent += finalBonus;
     
         console.log(`${name}'s bonus 🎉 ${finalBonus} 🎉 (rate: ${rate})`);
+        returnData.push(`${name}'s bonus 🎉 ${finalBonus} 🎉 (rate: ${rate})`);
     }
     console.log("🎉 Total Bonuses 🎉 : ", totalBonusSpent);
+    returnData.push("🎉 Total Bonuses 🎉 : "+ totalBonusSpent);
+
+    let returnDataString = returnData.toString().replaceAll(",","\n");
+    console.log(returnDataString);
+    return returnDataString;
 
     //functional Programming
     function convertSalary(salary) {
@@ -160,6 +168,7 @@ function func(...data){
   
     if(!isUnique){
       console.log("沒有");
+      return "沒有";
     }
 }
 

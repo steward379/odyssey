@@ -10,13 +10,72 @@
         <title>Tasks</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+            div {
+                padding: 15px;
+                box-shadow: 2px 2px 2px 2px #888888;
+            }
+            h3 {
+                color: #888888;
+            }
+        </style>
     </head>
-    <body>
+    <body >
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <div><h3>Task 1</h3><p id="task1"></p></div>
+        <div><h3>Task 2</h3><p id="task2" style="white-space: pre-line;"></p></div>
+        <div><h3>Task 3</h3><p id="task3" style="white-space: pre-line;"></p></div>
+        <div><h3>Task 4</h3><p id="task4" style="white-space: pre-line;"></p></div>
         
-        <script src="main.js" async defer></script>
+        <script src="main.js"></script>
+        <script>
+            document.querySelector('#task1').textContent =  
+                findAndPrint(
+                    {
+                    "Bob":"My name is Bob. I'm 18 years old.", 
+                    "Mary":"Hello, glad to meet you.",
+                    "Copper":"I'm a college student. Nice to meet you.", 
+                    "Leslie":"I am of legal age in Taiwan.",
+                    "Vivian":"I will vote for Donald Trump next week",
+                    "Jenny":"Good morning." 
+                    }
+                );
+            ;
+            document.querySelector('#task2').append(  
+                calculateSumOfBonus({
+                    "employees": [{
+                        "name": "John",
+                        "salary": "1000USD",
+                        "performance": "above average",
+                        "role": "Engineer"
+                    }, {
+                        "name": "Bob",
+                        "salary": 60000,
+                        "performance": "average",
+                        "role": "CEO"
+                    }, {
+                        "name": "Jenny",
+                        "salary": "50,000",
+                        "performance": "below average",
+                        "role": "Sales"
+                    }]
+                })
+            );
+            document.querySelector('#task3').textContent = 
+                func("彭大牆", "王明雅", "吳明")  + " \n" +
+                func("郭靜雅", "王立強", "林靜宜", "郭立恆", "林花花")  + " \n" +
+                func("郭宣雅", "林靜宜", "郭宣恆", "林靜花")
+            document.querySelector('#task4').textContent =  
+                getNumber(1) + " \n" +
+                getNumber(5) + " \n" +
+                getNumber(10); 
+
+        </script>
     </body>
 </html>
