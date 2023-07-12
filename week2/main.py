@@ -2,7 +2,7 @@ print( "========= Task 1 =========")
 # Task 1
 
 def find_and_print(messages):
-    # value 包含 >17 的數字、college 與 legal 就印出相應的 key
+    # value 包含 >17 的數字、college 與 legal 與 vote 就印出相應的 key
 
     key_outcome = []
 

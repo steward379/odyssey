@@ -2,7 +2,7 @@ console.log("========= Task 1 =========");
 // Task 1
 
 function findAndPrint(messages){
-    //value 包含 >17 的數字、college 與 legal 就印出相應的 key
+    //value 包含 >17 的數字、college 與 legal 與 vote 就印出相應的 key
 
     let keyOutcome = [];
     
@@ -18,7 +18,7 @@ function findAndPrint(messages){
         
         if(Object.values(messages)[i].includes("college") ||
            Object.values(messages)[i].includes("legal") || 
-           Object.values(messages)[i].includes("vote")
+           Object.values(messages)[i].includes("vote") ||
            ageMature(messages)){
                 console.log(Object.keys(messages)[i]);
                 keyOutcome.push(Object.keys(messages)[i]);
@@ -29,12 +29,12 @@ function findAndPrint(messages){
 } 
 findAndPrint(
     {
-    "Bob":"My name is Bob. I'm 18 years old.", 
-    "Mary":"Hello, glad to meet you.",
-    "Copper":"I'm a college student. Nice to meet you.", 
-    "Leslie":"I am of legal age in Taiwan.",
-    "Vivian":"I will vote for Donald Trump next week",
-    "Jenny":"Good morning." 
+        "Bob":"My name is Bob. I'm 18 years old.", 
+        "Mary":"Hello, glad to meet you.",
+        "Copper":"I'm a college student. Nice to meet you.", 
+        "Leslie":"I am of legal age in Taiwan.",
+        "Vivian":"I will vote for Donald Trump next week",
+        "Jenny":"Good morning." 
     }
 );
 
