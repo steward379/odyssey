@@ -64,7 +64,7 @@ function calculateSumOfBonus(data) {
         let { salary } = employee;
         salary = convertSalary(salary);
         
-        const { performance, name } = employee;  // 解構賦值
+        const { performance, name } = employee;  // 解構賦值ㄥ
         const rate = bonusRate(performance);
     
         const bonusPrimitive = salary * rate;
@@ -157,7 +157,7 @@ function func(...data){
             nameCounts[middleName] = [data[i]];
         }
     }
-    // console.log(nameCounts);
+    console.log(nameCounts);
     
     for(let name in nameCounts){
         if(nameCounts[name].length === 1){
@@ -212,3 +212,22 @@ function getNumber(index){
 getNumber(1); // print 4 
 getNumber(5); // print 10 
 getNumber(10); // print 15
+
+console.log("========= Task 5 =========");
+//Task 5
+
+function findIndexOfCar(seats, status, number){
+    // 如果該陣列索引值的值大於等於 number，且 status 為 1，則印出該索引值
+  
+    for(i =0; i < seats.length; i++){
+        if(number <= seats[i] && status[i]){
+          console.log("第"+(i+1)+"輛")
+          return i+1
+        }
+    }
+    console.log(-1);
+    return -1;
+}
+  findIndexOfCar([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2); // print 4 
+  findIndexOfCar([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); //print -1 
+  findIndexOfCar([4, 6, 5, 8], [0, 1, 1, 1], 4); // print 2

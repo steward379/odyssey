@@ -161,3 +161,16 @@ def get_number(index):
 get_number(1) # print 4
 get_number(5) # print 10 
 get_number(10) # print 15
+
+
+def find_index_of_car(seats, status, number):
+    for i in range(len(seats)):
+      if(number <= seats[i] and status[i]):
+        print(f"第{i+1}輛")
+        return i+1
+    print(-1)
+    return -1
+
+find_index_of_car([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2) # print 4 
+find_index_of_car([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4) # print -1 
+find_index_of_car([4, 6, 5, 8], [0, 1, 1, 1], 4) # print 2
