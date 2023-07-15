@@ -218,15 +218,25 @@ console.log("========= Task 5 =========");
 
 function findIndexOfCar(seats, status, number){
     // 如果該陣列索引值的值大於等於 number，且 status 為 1，則印出該索引值
-  
+    let numberArray = [];
+
     for(i =0; i < seats.length; i++){
-        if(number <= seats[i] && status[i]){
-          console.log("第"+(i+1)+"輛")
-          return i+1
+        if(seats[i] >= number && status[i]){
+            numberArray.push(seats[i]);
+        }else{
+            numberArray.push(0);
         }
     }
-    console.log(-1);
-    return -1;
+    numberArray.sort(function(a, b) {
+        return a - b;
+    });
+
+    let result = numberArray.find( value => value);
+
+    seats.indexOf(result);
+
+    console.log(seats.indexOf(result));
+    return seats.indexOf(result);
 }
   findIndexOfCar([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2); // print 4 
   findIndexOfCar([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); //print -1 

@@ -165,12 +165,22 @@ get_number(10) # print 15
 print( "========= Task 5 =========")
 #task 5
 def find_index_of_car(seats, status, number):
+    number_array = []
+
     for i in range(len(seats)):
       if(number <= seats[i] and status[i]):
-        print(f"第{i+1}輛")
-        return i+1
-    print(-1)
-    return -1
+        number_array.append(seats[i])
+      else:
+        number_array.append(0)
+
+    number_array.sort()
+
+    result = next((value for value in number_array if value), None)
+
+    index = seats.index(result) if result in seats else -1
+
+    print(index)
+    return index
 
 find_index_of_car([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2) # print 4 
 find_index_of_car([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4) # print -1 
