@@ -162,7 +162,8 @@ get_number(1) # print 4
 get_number(5) # print 10 
 get_number(10) # print 15
 
-
+print( "========= Task 5 =========")
+#task 5
 def find_index_of_car(seats, status, number):
     for i in range(len(seats)):
       if(number <= seats[i] and status[i]):
