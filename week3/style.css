@@ -1,0 +1,270 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  align-items: start;
+  height: 50px;
+}
+
+nav h1 {
+  --height: 50px;
+  --font-size: 20px;
+  margin-top: calc(var(--height)/2 - var(--font-size)/2);
+  padding: 0 10px;
+}
+
+nav #hamburger-menu-click {
+  display: none;
+}
+
+nav .hamburger-menu-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+nav .hamburger-menu-label .hamburger-menu {
+  display: none;
+}
+
+nav .hamburger-menu-label .xmark {
+  display: none;
+}
+
+nav .nav-list {
+  display: flex;
+  transition: all .3s;
+  padding: 0 10px;
+}
+
+nav .nav-list .nav-item {
+  padding: 10px;
+  --height: 50px;
+  --font-size: 20px;
+  padding-top: calc(var(--height)/2 - var(--font-size)/2);
+}
+
+nav #hamburger-menu-click:checked + .hamburger-menu-label .hamburger-menu {
+  display: none;
+}
+
+nav #hamburger-menu-click:checked + .hamburger-menu-label .xmark {
+  display: block;
+  position: fixed;
+  right: 20px;
+  z-index: 2;
+}
+
+nav #hamburger-menu-click:checked ~ .nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  background: lightgrey;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  padding-top: 50px;
+  transition: all .3s;
+  position: absolute;
+  z-index: 1;
+}
+
+nav #hamburger-menu-click:checked ~ .nav-list .nav-item {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.jumbotron {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  height: 50px;
+}
+
+.photo-thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 1200px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  gap: 20px 20px;
+}
+
+.photo-thumbnail .thumbnail-li {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+  height: 50px;
+  overflow: hidden;
+}
+
+.photo-thumbnail .thumbnail-li .thumbnail-img {
+  object-fit: cover;
+  width: 80px;
+}
+
+.photo-thumbnail .thumbnail-li .thumbnail-title {
+  padding: 10px;
+}
+
+.photo-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 1200px;
+  gap: 20px 20px;
+}
+
+.photo-profile .profile-li {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 300px;
+  flex: 1 1 15%;
+}
+
+.photo-profile .profile-li .profile-img {
+  position: relative;
+  min-height: 200px;
+  width: 100%;
+}
+
+.photo-profile .profile-li .profile-img .main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-profile .profile-li .profile-img .star {
+  position: absolute;
+  right: 3px;
+  top: 5px;
+}
+
+.photo-profile .profile-li .profile-img .star :hover {
+  fill: yellow;
+}
+
+.photo-profile .profile-li .profile-title {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-size: cover;
+  background-image: url("http://placekitten.com/100/101");
+  width: 100%;
+  height: 100%;
+}
+
+.photo-profile .profile-li .profile-title ::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 230, 255, 0.5);
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.photo-profile .profile-li .profile-title span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  .photo-thumbnail, .photo-profile {
+    width: 90%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1200px) {
+  .photo-thumbnail .thumbnail-li {
+    display: flex;
+    flex: 1 1 45%;
+  }
+  .photo-thumbnail .thumbnail-li-3 {
+    flex: 2 1 100%;
+  }
+  .photo-profile .profile-li {
+    flex: 1 1 20%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 880px) {
+  .photo-profile .profile-li {
+    flex: 1 1 40%;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 600px) {
+  nav .hamburger-menu-label .hamburger-menu {
+    display: block;
+  }
+  nav .nav-list {
+    display: none;
+  }
+  .photo-thumbnail .thumbnail-li {
+    display: flex;
+    flex: 1 1 50%;
+  }
+  .photo-thumbnail .thumbnail-li-3 {
+    display: flex;
+    flex: 1 1 50%;
+  }
+  .photo-profile .profile-li {
+    flex: 1 1 50%;
+  }
+}
