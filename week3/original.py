@@ -1,6 +1,7 @@
 import urllib.request
 import json
 import csv
+import sys
 
 url = 'https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json'
 
@@ -41,3 +42,5 @@ with urllib.request.urlopen(url) as url:
         for mrt, attractions in mrt_dict.items():
             # writer.writerow([mrt, ", ".join(attractions)])
              writer.writerow([mrt] + attractions)
+
+    print(sys.stdlib_module_names)
