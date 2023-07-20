@@ -1,7 +1,13 @@
 import urllib.request
 import json
 import csv
-import sys
+import os
+
+if os.path.exists("mrt.csv"):
+    os.remove("mrt.csv")
+
+if os.path.exists("attractions.csv"):
+    os.remove("attractions.csv")
 
 url = 'https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json'
 
@@ -9,7 +15,7 @@ with urllib.request.urlopen(url) as url:
     data = json.loads(url.read().decode())
     with open('attraction.csv', 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        writer.writerow(['name', 'address', 'longitude', 'latitude', 'images'])
+        writer.writerow(['景點名稱', '區域', '經度', '緯度', '第一張圖檔網址'])
 
         for attraction in data['result']['results']:
             district = attraction['address'].split('市')[1].split('區')[0].strip() + '區'
@@ -37,10 +43,10 @@ with urllib.request.urlopen(url) as url:
     with open('mrt.csv', 'w', newline='', encoding='utf-8') as mrt_file:
         writer = csv.writer(mrt_file)
 
-        writer.writerow(['mrt_station'] + ['attraction_' + str(i+1) for i in range(max_attractions)])
+        chinese_num = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一']
+
+        writer.writerow(['捷運站名稱'] + ['景點名稱' + chinese_num[i] for i in range(max_attractions)])
 
         for mrt, attractions in mrt_dict.items():
             # writer.writerow([mrt, ", ".join(attractions)])
              writer.writerow([mrt] + attractions)
-
-    print(sys.stdlib_module_names)
