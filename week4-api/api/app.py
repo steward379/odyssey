@@ -1,4 +1,5 @@
-from flask import Flask, render_template, jsonify, request, redirect, url_for, session, g, os
+from flask import Flask, render_template, jsonify, request, redirect, url_for, session, g
+import os
 
 app = Flask(__name__)
 # python3 -c 'import secrets; print(secrets.token_hex())'
