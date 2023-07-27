@@ -1,0 +1,92 @@
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html lang="zh-TW" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% extends "template.html" %}
+    <title>{% block title %} index {% endblock %}</title>
+    <meta name="description" content="flask app">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="/scripts/style.css"> -->
+    <!-- <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"> -->
+</head>
+<body>
+    {% block content %}  
+    <!-- {% set username_str = "my" %} -->
+    <main class="container-fluid">
+        <form class="sign-in-form" data-text="Sign-In" action="{{ url_for("sign_in") }}" onsubmit="return validateForm()" method="POST">
+        <!-- <form action="signIn" onsubmit="return validateForm()" method="post"> -->
+            <h2 class="sign-in-h2 h2 mb-3 font-weight-normal"> 😶‍🌫️  Sign In</h2>
+            <span class="text-to-show"> 🫠 Sign In</span>
+            <div class="form-group"></div>
+                <video  width="200px" src="{{ url_for("static", filename="discord-gif.mp4") }}"></video>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div>
+                <input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox">同意<a href="https://policies.google.com/terms?hl=zh-TW">使用政策</a>與
+                <a href="https://gist.github.com/poychang/f413c489b15e4af4e11197dc617f32d2">隱私權條款</a></label>
+            </div>
+            <input class="sign-out-btn pink-btn btn btn-lg btn-primary" type="submit" value="Sign In">
+        </form>
+        <form class="square-form" data-text="Square" action="{{ url_for("calculate") }}" method="POST">
+            <h4 class="sign-in-h2 h4 mb-3 font-weight-normal"> 🤖 Square </h4>
+            <span class="text-to-show">🤖 Square</span>
+            <div class="form-group">
+                <label style=" color: white" for="square">type an integer above 0:</label>
+                <input type="text" id="square" name="square-num">
+            </div>
+            <input class="sign-out-btn purple-btn btn btn-lg btn-secondary" type="submit" value="Calculate">
+        </form>
+    </main>
+    <script>
+        function validateForm() {
+            const checkBox = document.getElementById("checkbox");
+
+            if (!checkBox.checked) {
+                alert("Please check the checkbox first");
+            }
+            return checkBox.checked? true : false;
+        }
+        window.onload = function() {
+            const signInForm = document.querySelector(".sign-in-form");
+            const squareForm = document.querySelector(".square-form");
+
+            console.log(signInForm);
+            console.log(squareForm);
+
+            signInForm.addEventListener("mouseover", function() {
+                signInForm.classList.add("hovered");
+                squareForm.classList.add("unhovered");
+            });
+            signInForm.addEventListener("mouseout", function() {
+                signInForm.classList.remove("hovered");
+                squareForm.classList.remove("unhovered");
+            });
+            squareForm.addEventListener("mouseover", function() {
+                squareForm.classList.add("hovered");
+                signInForm.classList.add("unhovered");
+            });
+            squareForm.addEventListener("mouseout", function() {
+                squareForm.classList.remove("hovered");
+                signInForm.classList.remove("unhovered");
+            });
+        };
+    </script>
+    {% endblock %}  
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <script src="" async defer></script>
+</body>
+</html>

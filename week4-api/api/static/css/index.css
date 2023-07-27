@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* header */
+.jumbotron {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(89, 207, 220);
+    height: 200px; 
+    /* overlap bootstrap */
+    margin-bottom: 0;
+    background-image: url("https://images.unsplash.com/photo-1683009427692-8a28348b0965?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80");
+    background-size: cover;
+    background-position: 50% 45%;
+    /* background-position: center bottom; */
+}
+h1 {
+   border: 2px white solid;
+   padding: 30px 100px;
+   backdrop-filter: blur(2px);
+   -webkit-backdrop-filter: blur(2px); /* for Safari */
+   /* backdrop-filter' is not supported by Firefox, 
+   Firefox for Android, Safari, Safari on iOS. 
+   Add '-webkit-backdrop-filter' to support Safari 9+, Safari on iOS 9+ */
+}
+
+/* index */
+.container-fluid {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    padding: 0;
+    height: calc(100% - 250px);
+    transition: all 0.5s ease;
+}
+.sign-in-h2 {
+    font-size: 100px;
+    color: rgb(230, 232, 232);
+}
+.sign-in-form {
+    /* display: flex; */
+    flex: 3;
+    transition: all 0.5s ease;
+    padding: 20px;
+    overflow: auto;
+    overflow-y: hidden;
+    background-color: #f8a5c2;
+    position: relative;
+    height: 100%;
+
+    /* flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+video {
+    margin-bottom: 20px;
+}
+.square-form {
+    flex: 1;
+    transition: all 0.5s ease;
+    padding: 20px;
+    overflow: auto;
+    overflow-y: hidden;
+    background-color: #4f4636; 
+    position: relative;
+}
+.sign-in-form:hover { 
+    flex: 9;
+}
+.square-form:hover {
+    flex: 27;
+}
+
+/* vertical words */
+
+.text-to-show {
+    display: none;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+}
+/* .unhovered > *:not(.text-to-show) {
+    opacity: 0;
+    transition: opacity 0.6s;
+} */
+.unhovered > * {
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+.unhovered .text-to-show {
+    display: block;
+    opacity: 1;
+    color: white;
+}
+
+/* .sign-in-form:hover > *,
+.square-form:hover > * {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.sign-in-form:hover .text-to-show,
+.square-form:hover .text-to-show {
+    display: block;
+    opacity: 1;
+    
+} */
+/* member.html */
+.member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.congrats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: rgb(54, 186, 201); 
+}
+.admin-congrats {
+    color: rgb(223, 130, 30); 
+    font-size: 150px;
+}
+.orc-style-congrats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: #227325;
+}
+.sign-out-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: rgb(54, 186, 201); 
+    background: rgb(251, 249, 249);
+    border-radius: 10px;
+    border: 2px solid  rgb(89, 207, 220);
+    padding: 10px;
+}
+.sign-out-btn:hover {
+    text-decoration: none;
+    background-color: rgb(89, 207, 220);
+    border: 2px solid  rgb(89, 207, 220);
+    color: #f1f1f1;
+    cursor: pointer;
+}
+/* square  */
+
+.square {
+    color: rgb(89, 207, 220);
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    overflow: auto;
+}
+.square>img {
+    flex-shrink: 1;
+    min-width: 0;
+    height: auto;
+}
+.square-num {
+    font-size: 50px;
+}
+/* color button */
+.pink-btn {
+    color:  white;
+    background: none;
+    border: 2px solid white;;
+}
+.pink-btn:hover {
+    color:  #f8a5c2;
+    background: white;
+    border: 2px solid white;; 
+}
+.purple-btn {
+    color:  white;
+    background: none;
+    border: 2px solid white;; 
+}
+.purple-btn:hover {
+    color:  #4f4636; 
+    background: white;
+    border: 2px solid white;; 
+}
+/* orc-button */
+.orc-button{
+    color: #227325;
+    border: 2px solid #227325;
+}
+.orc-button:hover{
+    color: white;
+    background-color: #227325;
+    border: 2px solid #227325;
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
