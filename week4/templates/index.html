@@ -39,7 +39,7 @@
             </div>
             <input class="sign-out-btn pink-btn btn btn-lg btn-primary" type="submit" value="Sign In">
         </form>
-        <form class="square-form" data-text="Square" action="{{ url_for("calculate") }}" method="POST">
+        <form class="square-form" data-text="Square" onsubmit="event.preventDefault(); return validateNumber()" method="POST">
             <h4 class="sign-in-h2 h4 mb-3 font-weight-normal"> 🤖 Square </h4>
             <span class="text-to-show">🤖 Square</span>
             <div class="form-group">
@@ -57,6 +57,18 @@
                 alert("Please check the checkbox first");
             }
             return checkBox.checked? true : false;
+        }
+        function validateNumber(){
+            const square = document.getElementById("square");
+
+            const squareNum = parseInt(square.value);
+
+            if (isNaN(squareNum) || squareNum <= 0) {
+                alert("Please enter a positive number");
+                return false;
+            }
+            window.location.href = "/squared/" + squareNum;
+            return false;
         }
         window.onload = function() {
             const signInForm = document.querySelector(".sign-in-form");

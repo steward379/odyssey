@@ -4,7 +4,7 @@ import os
 app = Flask(__name__)
 # python3 -c 'import secrets; print(secrets.token_hex())'
 # app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") 
-app.config["SECRET_KEY"] = os.environ.get("c73b781f2d9ed26c21ff91a1fad1012676fc5737d7af2c0269271b80fbb6539f") 
+app.config["SECRET_KEY"] = "c73b781f2d9ed26c21ff91a1fad1012676fc5737d7af2c0269271b80fbb6539f"
 
 # g - only test
 @app.before_request
@@ -15,7 +15,7 @@ def load_user():
 #
 @app.route("/", methods=["GET", "POST"])
 def home():
-    if request.method == "POST":
+    if 'username' in request.form and 'password' in request.form:
         return redirect(url_for("sign_in"))
     return render_template("index.html")
 
@@ -53,17 +53,18 @@ def sign_out():
     session["signed_in"] = False
     return redirect(url_for("home"))
 
-@app.route("/calc", methods=["POST"])
-def calculate():
-    square_num = request.form.get("square-num")
-    try:
-        square_integer = int(square_num)
-    except ValueError:
-        return redirect(url_for("error", message="Please enter a positive number"))
+# @app.route("/calc", methods=["POST"])
+# def calculate():
 
-    return redirect(url_for("square", integer=square_integer)) if square_integer > 0 else redirect(url_for("error", message="Not a positive integer"))
+    # square_num = request.form.get("square-num")
+    # try:
+        # square_integer = int(square_num)
+    # except ValueError:
+        # return redirect(url_for("error", message="Please enter a positive number"))
+
+    # return redirect(url_for("square", integer=square_integer)) if square_integer > 0 else redirect(url_for("error", message="Not a positive integer"))
         
-@app.route("/square/<string:integer>")
+@app.route("/squared/<string:integer>")
 def square(integer):
     IMAGE_MAP = {
         "0": url_for('static', filename='--00.png'),
@@ -86,6 +87,7 @@ def square(integer):
 @app.route("/error/<string:message>")
 def error(message):
     # message = request.args.get('message', 'unknown error')
+    message = request.args.get('message', 'unknown error')
     return "Error: {}".format(message)
 
 # json - only test
