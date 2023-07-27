@@ -17,13 +17,12 @@
 <body>
     <header>
         <div class="jumbotron text-center text-white">
-            <h1>Welcome to {% if username %}
+            <h1 class="home"><a href="{{ url_for("home")}}">Welcome to {% if username %}
                             {{username}}'s
                             {% elif integer %}
                             square {{integer}}
                             {% else %}my{% endif %} 
-                            world!</h1>
-            <a class="navbar-brand" href="{{ url_for("home")}}">Home</a>
+                            world!</a></h1>
         </div>
     </header>
     {% block content %}
