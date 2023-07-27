@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% extends "template.html" %}
+        <title>{% block title %} index {% endblock %}</title>
+        <meta name="description" content="flask app">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="/scripts/style.css"> -->
+        <!-- <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"> -->
+        <script>
+            function validateForm() {
+                let checkBox = document.getElementById("checkbox");
+                if (!checkBox.checked) {
+                    alert("Please check the checkbox first");
+                }
+                return checkBox.checked? true : false;
+            }
+        </script>
+    </head>
+<body>
+    {% block content %}  
+    <!-- {% set username_str = "my" %} -->
+    <main class="container">
+        <form class="sign-in-form" action="{{ url_for("sign_in") }}" onsubmit="return validateForm()" method="post">
+        <!-- <form action="signIn" onsubmit="return validateForm()" method="post"> -->
+            <h2 class="sign-in-h2">Sign In</h2><br>
+            <video  width="200px" src="{{ url_for("static", filename="discord-gif.mp4") }}" ></video><br>
+            <span>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br>
+            </span>
+            <span>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+            </span>
+            <span>
+                <input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox">同意<a href="https://policies.google.com/terms?hl=zh-TW">使用政策</a>與
+                <a href="https://gist.github.com/poychang/f413c489b15e4af4e11197dc617f32d2">隱私權條款</a></label>
+            </span><br>
+            <input type="submit" value="Sign In">
+        </form>
+        <form class="sign-in-form square-form" action="{{ url_for("calculate") }}" onsubmit="" method="POST">
+            <h4 class="sign-in-h2">Square</h4><br>
+            <span>
+                <label for="square">type an integer above 0:</label>
+                <input type="text" id="square" name="square-num"><br>
+            </span><br>
+                <input type="submit" value="Calculate">
+        </form>
+    </main>
+    {% endblock %}  
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <script src="" async defer></script>
+</body>
+</html>

@@ -173,6 +173,8 @@ function func(...data){
     }
 }
 
+
+
 func("彭大牆", "王明雅", "吳明"); // print 彭大牆
 func("郭靜雅", "王立強", "林靜宜", "郭立恆", "林花花"); // print 林花花 
 func("郭宣雅", "林靜宜", "郭宣恆", "林靜花"); // print 沒有j
@@ -180,35 +182,48 @@ func("郭宣雅", "林靜宜", "郭宣恆", "林靜花"); // print 沒有j
 console.log("========= Task 4 =========");
 // Task 4
 
-function getNumber(index){
-    // index[0] = 0 + 0, index[1] = 1 + 3
-    // index[2] = 2 + 1, index[3] = 3 + 4
-    // index[4] = 4 + 2, index[5] = 5 + 5 
-    // index[6] = 6 + 3, index[7] = 7 + 6
-    // index[8] = 8 + 4, index[9] = 9 + 7
-    // index[10] = 10 + 5 
-    // 由此可知奇數項目為初始值 index + 3，每增加一奇數增 1
-    // 偶數項目(含0) 為 index + 0，每增加一奇數增 1
+// function getNumber(index){
+//     // index[0] = 0 + 0, index[1] = 1 + 3
+//     // index[2] = 2 + 1, index[3] = 3 + 4
+//     // index[4] = 4 + 2, index[5] = 5 + 5 
+//     // index[6] = 6 + 3, index[7] = 7 + 6
+//     // index[8] = 8 + 4, index[9] = 9 + 7
+//     // index[10] = 10 + 5 
+//     // 由此可知奇數項目為初始值 index + 3，每增加一奇數增 1
+//     // 偶數項目(含0) 為 index + 0，每增加一奇數增 1
 
-    let array =[];
-    let evenCount = 0;
-    let oddCount = 3;
-    let arrayLimit = 20;
+//     let array =[];
+//     let evenCount = 0;
+//     let oddCount = 3;
+//     let arrayLimit = 20;
 
-    for (i=0; i < arrayLimit; i++){
-        if(i%2 === 0 ){
-            array.push(i + evenCount);
-            evenCount ++;
-        }else{
-            array.push(i + oddCount);
-            oddCount ++;
-        }
+//     for (i=0; i < arrayLimit; i++){
+//         if(i%2 === 0 ){
+//             array.push(i + evenCount);
+//             evenCount ++;
+//         }else{
+//             array.push(i + oddCount);
+//             oddCount ++;
+//         }
         
+//     }
+//     // console.log(array);
+//     console.log(array[index]);
+//     return array[index];
+// }
+
+// O(1)
+function getNumber(index){
+    let result;
+    if(index % 2 === 0 ){
+        result = index + Math.floor(index / 2);
+    }else{
+        result = index + Math.floor(index / 2) + 3;
     }
-    // console.log(array);
-    console.log(array[index]);
-    return array[index];
+    console.log(result);
+    return result;
 }
+
 getNumber(1); // print 4 
 getNumber(5); // print 10 
 getNumber(10); // print 15
@@ -238,6 +253,6 @@ function findIndexOfCar(seats, status, number){
     console.log(seats.indexOf(result));
     return seats.indexOf(result);
 }
-  findIndexOfCar([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2); // print 4 
-  findIndexOfCar([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); //print -1 
-  findIndexOfCar([4, 6, 5, 8], [0, 1, 1, 1], 4); // print 2
+findIndexOfCar([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2); // print 4 
+findIndexOfCar([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); //print -1 
+findIndexOfCar([4, 6, 5, 8], [0, 1, 1, 1], 4); // print 2

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% extends "template.html" %}
+        <title>{% block title %} member {{ username }} {% endblock %}</title>
+        <meta name="description" content="flask app">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="/scripts/style.css"> -->
+        <!-- <link rel="icon" href="{{ url_for("static", filename='favicon.ico') }}"> -->
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"> -->
+    </head>
+<body>
+    {% block content %}
+    <!-- {% set username_str = username + "'s" %} -->
+    <div class="member">
+        <h2 class="{% if username == 'orc' %}
+                        orc-style-congrats
+                    {% else %}congrats{% endif %}">  Congrats! {{ username }}</h2>
+        {% if username in user_image_map %}
+            <img src="{{ user_image_map[username] }}" alt="User Image">
+        {% endif %}
+        <a class="sign-out-btn" href="{{ url_for("sign_out") }}">Sign Out</a>
+    </div>
+    {% endblock %}    
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <script src="" async defer></script>
+</body>
+</html>

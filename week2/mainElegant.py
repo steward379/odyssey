@@ -202,3 +202,16 @@ def func(*data):
 func("彭大牆", "王明雅", "吳明")
 func("郭靜雅", "王立強", "林靜宜", "郭立恆", "林花花")
 func("郭宣雅", "林靜宜", "郭宣恆", "林靜花")
+
+def get_number(index):
+    if index % 2 == 0:
+        result = index // 2 + index
+    else:
+        result = index // 2 + index + 3
+    print(result)
+    return result
+
+get_number(1) # print 4
+get_number(5) # print 10 
+get_number(10) # print 15
+

@@ -1,0 +1,70 @@
+/* header */
+.jumbotron {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(89, 207, 220);
+}
+/* index */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sign-in-h2 {
+    font-size: 100px;
+    color: rgb(89, 207, 220);
+}
+.square-form {
+    margin-bottom: 100px;
+}
+
+/* member.html */
+.member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.congrats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: rgb(248, 98, 150);
+}
+.orc-style-congrats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: #227325;
+}
+.sign-out-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #227325;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    border: 2px solid #227325;
+    padding: 10px;
+    margin: 10px;
+}
+.sign-out-btn:hover {
+    text-decoration: none;
+    background-color: #227325;
+    color: #f3f3f3;
+    cursor: pointer;
+}

@@ -144,7 +144,7 @@ calculateSumOfBonus({
 // Array.from
 // _ 代表不需要使用的參數
 
-function getNumber(index){
+function getNumberArray(index){
     const array = Array.from({length: 20}).map((_, i) => {
         return i % 2 === 0 ? i + Math.floor(i / 2) : i + Math.floor(i / 2) + 3;
     });
@@ -153,10 +153,17 @@ function getNumber(index){
     return array[index];
 }
 
+function getNumber(index){
+    let result = index % 2 === 0 ? 
+                 index + Math.floor(index / 2) : 
+                 index + Math.floor(index / 2) + 3;
+    console.log(result);
+    return result;
+}
+
 getNumber(1); // print 4 
 getNumber(5); // print 10 
 getNumber(10); // print 15
-
 
 function findIndexOfCar(seats, status, number){
     // 如果該陣列索引值的值大於等於 number，且 status 為 1，則印出該索引值
@@ -173,10 +180,33 @@ function findIndexOfCar(seats, status, number){
     console.log(seats.indexOf(result));
     return avaiSeats.indexOf(result);
 }
-  findIndexOfCar([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2); // print 4 
-  findIndexOfCar([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); //print -1 
-  findIndexOfCar([4, 6, 5, 8], [0, 1, 1, 1], 4); // print 2
-  findIndexOfCar([3, 10, 3, 1], [1, 1, 0, 1], 2); // print 0
+findIndexOfCar([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2); // print 4 
+findIndexOfCar([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); //print -1 
+findIndexOfCar([4, 6, 5, 8], [0, 1, 1, 1], 4); // print 2
+findIndexOfCar([3, 10, 3, 1], [1, 1, 0, 1], 2); // print 0
+
+
+function findIndexOfCarTry(seats, status, number){
+    let min_val = Infinity;
+    let min_index = -1;
+
+    for(let i = 0; i < seats.length; i++){
+        if(seats[i] >= number && status[i] && seats[i] < min_val){
+            min_val = seats[i];
+            min_index = i;
+        }
+    }
+
+    console.log(min_index);
+    return min_index;
+}
+
+findIndexOfCar([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2); // print 4 
+findIndexOfCar([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); //print -1 
+findIndexOfCar([4, 6, 5, 8], [0, 1, 1, 1], 4); // print 2
+
+
+
 
 
   def func(*data):

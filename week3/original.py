@@ -33,10 +33,13 @@ with urllib.request.urlopen(url) as url:
 
     for attraction in data['result']['results']:
         mrt = attraction['MRT']
-        if mrt not in mrt_dict:
+        if mrt is None:
+             mrt_dict["沒有資料"] = [attraction['stitle']]
+        elif mrt not in mrt_dict:
             mrt_dict[mrt] = [attraction['stitle']]
         else:
             mrt_dict[mrt].append(attraction['stitle'])
+
 
     max_attractions = max(len(attractions) for attractions in mrt_dict.values())
 
@@ -49,4 +52,5 @@ with urllib.request.urlopen(url) as url:
 
         for mrt, attractions in mrt_dict.items():
             # writer.writerow([mrt, ", ".join(attractions)])
-             writer.writerow([mrt] + attractions)
+            writer.writerow([mrt] + attractions)
+            

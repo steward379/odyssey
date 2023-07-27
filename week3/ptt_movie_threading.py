@@ -74,24 +74,24 @@ def write_data(page_url, page_count):
         else:
             article_urls.append("沒網址，本文恐已被刪除")
 
-    article_datetime_dict = get_article_datetime(article_urls, page_count)
-
     with lock:
-        with open("movie_threads.txt", "a", encoding="utf-8") as file:
-            file.write(f"=== 第 {page_count+1} 頁 ===\n")
-            for i, title in enumerate(titles):
-                if title.a is not None:
-                    title_text = title.a.string.strip()
-                else:
-                    title_text = title.string.strip()
-                
-                push_count_elem = title.find_previous_sibling("div", class_="nrec")
-                push_count = push_count_elem.span.string.strip() if push_count_elem.span is not None else "0"
+        article_datetime_dict = get_article_datetime(article_urls, page_count)
 
-                article_datetime = article_datetime_dict[article_urls[i]]
+    with open("movie_threads.txt", "a", encoding="utf-8") as file:
+        file.write(f"=== 第 {page_count+1} 頁 ===\n")
+        for i, title in enumerate(titles):
+            if title.a is not None:
+                title_text = title.a.string.strip()
+            else:
+                title_text = title.string.strip()
+            
+            push_count_elem = title.find_previous_sibling("div", class_="nrec")
+            push_count = push_count_elem.span.string.strip() if push_count_elem.span is not None else "0"
+            
+            article_datetime = article_datetime_dict[article_urls[i]]
 
-                print(f"第{page_count + 1}頁第 {i + 1} 篇", title_text, push_count, article_datetime)
-                file.write(f"{title_text},{push_count},{article_datetime}\n")
+            print(f"第{page_count + 1}頁第 {i + 1} 篇", title_text, push_count, article_datetime)
+            file.write(f"{title_text},{push_count},{article_datetime}\n")
 
     return root
 
