@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+
+<!-- [if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif] -->
+<!-- [if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif] -->
+<!-- [if IE 8]>         <html class="no-js lt-ie9"> <![endif] -->
+<!-- [if gt IE 8]>      <html class="no-js"> <![endif] -->
+<html lang="zh-TW" class="no-js"></html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,13 +17,22 @@
 </head>
 <body>
     {% block content %}
-    <div class="square">
-        <h2 class="congrats"> {{ integer*integer }} </h2>
+    <div class="sign-out-btn container text-center my-4">
+        <h2 class="square-num display-4"> {{ squared }} </h2>
+        <div class="square row justify-content-center">
+            {% for img_url in image_urls %}
+                <div class="col-6 col-md-4 col-lg-3 my-2">
+                    <img class="img-fluid" src="{{ img_url }}" alt="Digit image">
+                </div>
+            {% endfor %}
+        </div>
+        <p class="mt-4">Image by <a href="https://www.freepik.com/free-vector/hand-drawn-mathematical-symbols_11350317.htm#query=numbers%20svg&position=6&from_view=keyword&track=ais">Freepik</a></p>
     </div>
-    {% endblock %}    
+    {% endblock %}
         <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
     <script src="" async defer></script>
 </body>
 </html>
