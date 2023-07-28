@@ -84,7 +84,7 @@ def square(integer):
     print(image_urls)
     return render_template("square.html", integer=integer, squared=squared, image_urls=image_urls)
 
-@app.route("/error/<string:message>")
+@app.route("/error/")
 def error(message):
     # message = request.args.get('message', 'unknown error')
     message = request.args.get('message', 'unknown error')
