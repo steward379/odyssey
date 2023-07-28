@@ -17,11 +17,12 @@
 </head>
 <body>
     {% block content %}
-    <div class="sign-out-btn container text-center my-4">
+    <div class="square-btn sign-out-btn">
         <h2 class="square-num display-4"> {{ squared }} </h2>
-        <div class="square row justify-content-center">
+        <div class="original-num">{{ integer }}</div> 
+        <div class="square">
             {% for img_url in image_urls %}
-                <div class="col-6 col-md-4 col-lg-3 my-2">
+                <div>
                     <img class="img-fluid" src="{{ img_url }}" alt="Digit image">
                 </div>
             {% endfor %}
