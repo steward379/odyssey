@@ -2,9 +2,9 @@
 url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
- 
+
 [packages]
-flask = "2.3.2"
- 
+flask = "2.3"
+
 [requires]
-python_version = "3.11.3"
+python_version = "3.9"

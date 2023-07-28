@@ -6,11 +6,22 @@ app = Flask(__name__)
 # app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") 
 app.config["SECRET_KEY"] = "c73b781f2d9ed26c21ff91a1fad1012676fc5737d7af2c0269271b80fbb6539f"
 
-# g - only test
 @app.before_request
 def load_user():
     g.user_name = {
         "orc": "orc",
+    }
+    g.IMAGE_MAP = {
+        "0": url_for('static', filename='--00.png'),
+        "1": url_for('static', filename='--01.png'),
+        "2": url_for('static', filename='--02.png'),
+        "3": url_for('static', filename='--03.png'),
+        "4": url_for('static', filename='--04.png'),
+        "5": url_for('static', filename='--05.png'),
+        "6": url_for('static', filename='--06.png'),
+        "7": url_for('static', filename='--07.png'),
+        "8": url_for('static', filename='--08.png'),
+        "9": url_for('static', filename='--09.png')
     }
 #
 @app.route("/", methods=["GET", "POST"])
@@ -31,14 +42,16 @@ def sign_in():
         return redirect(url_for("member", username=username))
         # return "Sign in successful for user: {username}".format(username)
     elif not username or not password:
-        return redirect(url_for("error", message="Please enter username and password"))
+        #  return redirect(url_for("error") + "?message=Please+enter+username+and+password")
+        return redirect(url_for("error", message="1: Please enter username and password"))
     else:
-        return redirect(url_for("error", message="Wrong username or password"))
+        # return redirect(url_for("error") + "?message=Wrong+username+or+password")
+        return redirect(url_for("error", message="2: Wrong username or password"))
 
 @app.route("/member/<string:username>")
 def member(username): 
     if not session.get("signed_in"):
-        return redirect(url_for("error", message="Please sign in first"))
+        return redirect(url_for("error", message="3: Please sign in first"))
     if session.get("signed_in"):
         USER_IMAGE_MAP = {
             "orc": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c79cbea-6f74-4dd8-86a0-3d9870b26d9f/dd3o7up-a21bc4e7-41b9-4b73-b100-53fe549f38f3.png/v1/fill/w_1024,h_610,q_80,strp/dnd_characters_by_zetrystan_dd3o7up-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjEwIiwicGF0aCI6IlwvZlwvN2M3OWNiZWEtNmY3NC00ZGQ4LTg2YTAtM2Q5ODcwYjI2ZDlmXC9kZDNvN3VwLWEyMWJjNGU3LTQxYjktNGI3My1iMTAwLTUzZmU1NDlmMzhmMy5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.a944xGWAwpZoUzt_7440RjUupOwoRidMfLEeErdNK1M",
@@ -66,29 +79,33 @@ def sign_out():
         
 @app.route("/squared/<string:integer>")
 def square(integer):
-    IMAGE_MAP = {
-        "0": url_for('static', filename='--00.png'),
-        "1": url_for('static', filename='--01.png'),
-        "2": url_for('static', filename='--02.png'),
-        "3": url_for('static', filename='--03.png'),
-        "4": url_for('static', filename='--04.png'),
-        "5": url_for('static', filename='--05.png'),
-        "6": url_for('static', filename='--06.png'),
-        "7": url_for('static', filename='--07.png'),
-        "8": url_for('static', filename='--08.png'),
-        "9": url_for('static', filename='--09.png')
-    }
     integer = int(integer)
     squared = int(integer) *int(integer)
-    image_urls = [IMAGE_MAP[digit] for digit in str(squared)]
+    image_urls = [g.IMAGE_MAP[digit] for digit in str(squared)]
     print(image_urls)
     return render_template("square.html", integer=integer, squared=squared, image_urls=image_urls)
 
+# @app.route("/error/<string:message>")
 @app.route("/error/")
-def error(message):
-    # message = request.args.get('message', 'unknown error')
-    message = request.args.get('message', 'unknown error')
-    return "Error: {}".format(message)
+# def error(message):
+def error():
+    message = request.args.get('message', '0 unknown error')
+    message = message.replace('+', ' ')  # replace '+' with space
+    messages = []
+    buffer = '' # 避免文字因為成為獨立元素而變成等距
+
+    for char in message:
+        if char.isdigit():
+            if buffer:
+                messages.append(('char', buffer))
+            messages.append(('img', g.IMAGE_MAP[char]))
+        else:
+            buffer += char
+    if buffer:
+        messages.append(('char', buffer))
+
+    return render_template("error.html", messages=messages, message=message)
+    # return "Error: {}".format(message)
 
 # json - only test
 @app.route('/json')

@@ -61,9 +61,9 @@
         function validateNumber(){
             const square = document.getElementById("square");
 
-            const squareNum = parseInt(square.value);
+            const squareNum = square.value;
 
-            if (isNaN(squareNum) || squareNum <= 0) {
+            if (!/^\d+$/.test(squareNum) || parseInt(squareNum) <= 0) {
                 alert("Please enter a positive number");
                 return false;
             }
