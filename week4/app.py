@@ -12,16 +12,16 @@ def load_user():
         "orc": "orc",
     }
     g.IMAGE_MAP = {
-        "0": url_for('static', filename='--00.png'),
-        "1": url_for('static', filename='--01.png'),
-        "2": url_for('static', filename='--02.png'),
-        "3": url_for('static', filename='--03.png'),
-        "4": url_for('static', filename='--04.png'),
-        "5": url_for('static', filename='--05.png'),
-        "6": url_for('static', filename='--06.png'),
-        "7": url_for('static', filename='--07.png'),
-        "8": url_for('static', filename='--08.png'),
-        "9": url_for('static', filename='--09.png')
+        "0": url_for('static', filename='images/--00.png'),
+        "1": url_for('static', filename='images/--01.png'),
+        "2": url_for('static', filename='images/--02.png'),
+        "3": url_for('static', filename='images/--03.png'),
+        "4": url_for('static', filename='images/--04.png'),
+        "5": url_for('static', filename='images/--05.png'),
+        "6": url_for('static', filename='images/--06.png'),
+        "7": url_for('static', filename='images/--07.png'),
+        "8": url_for('static', filename='images/--08.png'),
+        "9": url_for('static', filename='images/--09.png')
     }
 #
 @app.route("/", methods=["GET", "POST"])
@@ -55,7 +55,7 @@ def member(username):
     if session.get("signed_in"):
         USER_IMAGE_MAP = {
             "orc": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c79cbea-6f74-4dd8-86a0-3d9870b26d9f/dd3o7up-a21bc4e7-41b9-4b73-b100-53fe549f38f3.png/v1/fill/w_1024,h_610,q_80,strp/dnd_characters_by_zetrystan_dd3o7up-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjEwIiwicGF0aCI6IlwvZlwvN2M3OWNiZWEtNmY3NC00ZGQ4LTg2YTAtM2Q5ODcwYjI2ZDlmXC9kZDNvN3VwLWEyMWJjNGU3LTQxYjktNGI3My1iMTAwLTUzZmU1NDlmMzhmMy5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.a944xGWAwpZoUzt_7440RjUupOwoRidMfLEeErdNK1M",
-            "admin": url_for("static", filename="rick.jpeg")
+            "admin": url_for("static", filename="/images/rick.jpeg")
         }
         return render_template("member.html", username=username, user_image_map=USER_IMAGE_MAP)
     else:
