@@ -1,0 +1,11 @@
+<%- include('./template.ejs', { 
+    title: `square ${integer}`, 
+    username: null,
+    signOutMessage: null,
+    message : "",
+    body: include('./body/square_body', { 
+                                    integer: integer,
+                                    squared: squared,
+                                    image_urls : image_urls 
+                                 })
+}) %>

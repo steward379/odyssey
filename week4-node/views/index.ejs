@@ -1,0 +1,8 @@
+<%- include('./template.ejs', { 
+  title: 'index',
+  username: username,
+  integer: integer,
+  message: "",
+  signOutMessage: signOutMessage,
+  body: include('./body/index_body', { signOutMessage: signOutMessage })
+}) %>

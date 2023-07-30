@@ -1,0 +1,14 @@
+<div class="member container text-center">
+  <h2 class="<%= username === 'orc' ? 'orc-style-congrats' : (username === 'admin' ? 'admin-congrats' : 'congrats') %>">
+    Congrats! 👉 <%= username %> 👈 😆
+  </h2>
+  <% if(username in user_image_map && user_image_map[username]) { %>
+  <img class="img-fluid" src="<%= user_image_map[username] %>" alt="User Image">
+  <% } %>
+  <% if(!(username in user_image_map && user_image_map[username])) { %>
+  <span> why not try 'orc' and 'admin' as username and type-in random password?</span>
+  <% } %>
+  <a class="sign-out-btn btn-lg my-4 <%= username === 'orc' ? 'orc-button' : '' %>" href="/sign_out">
+    Sign Out
+  </a>
+</div>

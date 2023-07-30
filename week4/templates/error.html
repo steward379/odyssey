@@ -20,7 +20,7 @@
                 {% for msg_type, msg_content in messages %}
                     {% if msg_type == 'img' %}
                         <img class="img-fluid" src="{{ msg_content }}" alt="Digit image" style="width:150px;height:150px;">
-                    {% else %}ve
+                    {% else %}
                         {{msg_content}}
                     {% endif %}
                 {% endfor %}

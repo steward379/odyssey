@@ -1,0 +1,6 @@
+<%- include('./template.ejs', { 
+  title: `member ${username}`,
+  username: username,
+  signOutMessage: null,
+  body: include('./body/member_body', { username: username, user_image_map: user_image_map })
+}) %>

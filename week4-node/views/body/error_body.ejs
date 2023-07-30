@@ -1,0 +1,11 @@
+<div>
+  <h2 class="sign-in-h2 h2 mb-3 font-weight-normal" style="color: rosybrown;padding: 20px;"> 😶‍🌫️ Error
+    <% messages.forEach(({type, content}) => { %>
+    <% if (type === 'img') { %>
+    <img class="img-fluid" src="<%= decodeURIComponent(content) %>" alt="Digit image" style="width:150px;height:150px;">
+    <% } else { %>
+    <%= content %>
+    <% } %>
+    <% }) %>
+  </h2>
+</div>

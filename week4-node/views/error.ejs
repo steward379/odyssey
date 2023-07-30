@@ -1,0 +1,9 @@
+<%- include('./template.ejs', { 
+  title: `error ${message}`,
+  message: message,
+  messages: [message],
+  signOutMessage: null,
+  username: null,
+  integer: null,
+  body: include('./body/error_body', { messages: messages, message: message })
+}) %>
