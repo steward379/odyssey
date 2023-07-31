@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const ejs = require("ejs");
 const { parse } = require("dotenv");
 const memberRoutes = require("./routes/member");
 const signoutRoutes = require("./routes/signout");
@@ -49,22 +50,10 @@ app.use(
 //   console.log(results.rows);
 // });
 
-const imageMap = {
-  0: "/images/--00.png",
-  1: "/images/--01.png",
-  2: "/images/--02.png",
-  3: "/images/--03.png",
-  4: "/images/--04.png",
-  5: "/images/--05.png",
-  6: "/images/--06.png",
-  7: "/images/--07.png",
-  8: "/images/--08.png",
-  9: "/images/--09.png",
-};
-
 // already in db
 // const validUsers = ["orc", "test", "admin"];
 
+app.engine("ejs", ejs.__express);
 app.set("view engine", "ejs");
 
 app.use("/", homeRoutes);
