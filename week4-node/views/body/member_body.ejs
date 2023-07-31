@@ -8,6 +8,7 @@
   <% if(!(username in user_image_map && user_image_map[username])) { %>
   <span> why not try 'orc' and 'admin' as username and type-in random password?</span>
   <% } %>
+  <!-- href="/sign_out" -->
   <a class="sign-out-btn btn-lg my-4 <%= username === 'orc' ? 'orc-button' : '' %>" href="/sign_out">
     Sign Out
   </a>
