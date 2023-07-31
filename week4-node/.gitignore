@@ -1,8 +1,10 @@
 .vercel
+.env 
 *.log
 *.pyc
 __pycache__
 node_modules
+
 
 # Environments 
 .env 
