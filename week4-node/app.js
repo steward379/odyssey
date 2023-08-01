@@ -289,6 +289,7 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(3000, () =>
-  console.log("Server running on port 3000 at: http://localhost:3000/")
+const port = process.env.PORT || 3000; // Use the port provided by Vercel, or default to 3000 for local development
+app.listen(port, () =>
+  console.log(`Server running on port ${port} at: http://localhost:${port}/`)
 );

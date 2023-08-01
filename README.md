@@ -17,6 +17,19 @@
 
 ## Week 4
 
-- All talks completed.
+- All tasks completed.
 - build beaitiful front-end styles with bootstrap & transitions.
-- (To-do) integrated with React
+- (To-do) integrated with React.
+- (Done) Change Flask to Node.js.
+- (To-do) Change Node.js to Next.js (React).
+- Charkara UI?
+
+## Week 5
+
+- MySQL SQL practice.
+- MySQL workbench established.
+
+## Week 6
+
+
+## Week 7
