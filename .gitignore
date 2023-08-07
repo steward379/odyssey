@@ -9,6 +9,12 @@ help.sql
 member.sql
 message.sql
 
+bcrypt.py
+bcrypt_db.py
+
+selenum_ref.py
+selenum_ref_test.ipynb
+
 # Environments 
 .env 
 .venv 

@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(89, 207, 220);
-    height: 250px; 
+    height: 250px;
     /* overlap bootstrap */
     margin-bottom: 0;
     background-image: url("https://images.unsplash.com/photo-1683009427692-8a28348b0965?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80");
@@ -20,11 +20,11 @@
     z-index: 2;
 }
 .home {
-   border: 2px white solid;
-   padding: 30px 100px;
-   backdrop-filter: blur(2px);
-   -webkit-backdrop-filter: blur(2px); /* for Safari */
-   /* backdrop-filter' is not supported by Firefox, 
+    border: 2px white solid;
+    padding: 30px 100px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px); /* for Safari */
+    /* backdrop-filter' is not supported by Firefox, 
    Firefox for Android, Safari, Safari on iOS. 
    Add '-webkit-backdrop-filter' to support Safari 9+, Safari on iOS 9+ */
 }
@@ -60,11 +60,11 @@
     flex: 3;
     transition: all 0.5s ease;
     padding: 20px;
-    overflow: hidden; 
+    overflow: hidden;
     overflow-y: hidden;
     background-color: #f8a5c2;
     position: relative;
-    height: 800px;
+
     /* height: 100%; */
     /* min-height: 100%; */
 
@@ -82,12 +82,12 @@ video {
     padding: 20px;
     overflow: hidden;
     overflow-y: hidden;
-    background-color: #4f4636; 
+    background-color: #4f4636;
     position: relative;
     /* height: 100%; */
     /* min-height: 100%; */
 }
-.sign-in-form:hover { 
+.sign-in-form:hover {
     flex: 9;
 }
 .square-form:hover {
@@ -129,7 +129,7 @@ video {
     /* display: flex; */
     visibility: visible;
     pointer-events: auto;
-} 
+}
 
 /* member.html */
 .member {
@@ -144,10 +144,10 @@ video {
     justify-content: center;
     align-items: center;
     font-size: 100px;
-    color: rgb(54, 186, 201); 
+    color: rgb(54, 186, 201);
 }
 .admin-congrats {
-    color: rgb(223, 130, 30); 
+    color: rgb(223, 130, 30);
     font-size: 150px;
 }
 .orc-style-congrats {
@@ -163,16 +163,16 @@ video {
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    color: rgb(54, 186, 201); 
+    color: rgb(54, 186, 201);
     background: rgb(251, 249, 249);
     border-radius: 10px;
-    border: 2px solid  rgb(89, 207, 220);
+    border: 2px solid rgb(89, 207, 220);
     padding: 10px;
 }
 .sign-out-btn:hover {
     text-decoration: none;
     background-color: rgb(89, 207, 220);
-    border: 2px solid  rgb(89, 207, 220);
+    border: 2px solid rgb(89, 207, 220);
     color: #f1f1f1;
     cursor: pointer;
 }
@@ -185,7 +185,7 @@ video {
     justify-content: space-around;
     overflow: auto;
 }
-.square>img {
+.square > img {
     flex-shrink: 1;
     min-width: 0;
     height: auto;
@@ -195,7 +195,7 @@ video {
 }
 .square-btn {
     transition: opacity 0.3s ease;
-    position: relative; 
+    position: relative;
     flex-grow: 1;
 }
 .square-btn:hover {
@@ -203,10 +203,10 @@ video {
 }
 .original-num {
     display: none;
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     /* z-index: 2;  */
     font-size: 500px;
 }
@@ -215,31 +215,31 @@ video {
 }
 /* color button */
 .pink-btn {
-    color:  white;
+    color: white;
     background: none;
-    border: 2px solid white;;
+    border: 2px solid white;
 }
 .pink-btn:hover {
-    color:  #f8a5c2;
+    color: #f8a5c2;
     background: white;
-    border: 2px solid white;; 
+    border: 2px solid white;
 }
 .purple-btn {
-    color:  white;
+    color: white;
     background: none;
-    border: 2px solid white;; 
+    border: 2px solid white;
 }
 .purple-btn:hover {
-    color:  #4f4636; 
+    color: #4f4636;
     background: white;
-    border: 2px solid white;; 
+    border: 2px solid white;
 }
 /* orc-button */
-.orc-button{
+.orc-button {
     color: #227325;
     border: 2px solid #227325;
 }
-.orc-button:hover{
+.orc-button:hover {
     color: white;
     background-color: #227325;
     border: 2px solid #227325;
@@ -254,7 +254,8 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
-    .sign-in-form, .square-form {
+    .sign-in-form,
+    .square-form {
         flex-direction: column;
         align-items: center;
     }
@@ -264,7 +265,8 @@ footer {
     .square-form:hover {
         flex: 15;
     }
-    .sign-in-h2, .text-to-show {
+    .sign-in-h2,
+    .text-to-show {
         font-size: 3rem;
     }
     /* Adjusting the font size of square number */
