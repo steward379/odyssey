@@ -1,0 +1,40 @@
+
+<!-- [if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif] -->
+<!-- [if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif] -->
+<!-- [if IE 8]>         <html class="no-js lt-ie9"> <![endif] -->
+<!-- [if gt IE 8]>      <html class="no-js"> <![endif] -->
+<html lang="zh-TW" class="no-js"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% extends "template.html" %}
+    <title>{% block title %} square {{ integer }}{% endblock %}</title>
+    <meta name="description" content="flask app">
+
+    <!-- <link rel="stylesheet" href="/scripts/style.css"> -->
+    <!-- <link rel="icon" href="{{ url_for("static", filename='favicon.ico') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"> -->
+</head>
+<body>
+    {% block content %}
+    <div class="square-btn sign-out-btn">
+        <h2 class="square-num display-4"> {{ squared }} </h2>
+        <div class="original-num">{{ integer }}</div> 
+        <div class="square">
+            {% for img_url in image_urls %}
+                <div>
+                    <img class="img-fluid" src="{{ img_url }}" alt="Digit image">
+                </div>
+            {% endfor %}
+        </div>
+        <p class="mt-4">Image by <a href="https://www.freepik.com/free-vector/hand-drawn-mathematical-symbols_11350317.htm#query=numbers%20svg&position=6&from_view=keyword&track=ais">Freepik</a></p>
+    </div>
+    {% endblock %}
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <script src="" async defer></script>
+</body>
+</html>

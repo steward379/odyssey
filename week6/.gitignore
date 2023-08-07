@@ -2,12 +2,6 @@
 *.log
 *.pyc
 __pycache__
-node_modules
-
-data.sql
-help.sql
-member.sql
-message.sql
 
 # Environments 
 .env 
