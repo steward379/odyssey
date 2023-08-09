@@ -41,7 +41,7 @@
   </div>
   <h2 class="h2 mb-3 font-weight-normal">快來留言吧!</h2>
 
-  <form action="/createMessage" method="post">
+  <form name="commentForm" action="/createMessage" onsubmit="return validateCommentForm()" method="POST">
     <input type="text" name="content" placeholder="留言內容">
     <input type="submit" value="送出">
   </form>

@@ -21,6 +21,17 @@ function validateSignInForm() {
   }
 }
 
+function validateCommentForm() {
+  const comment = document.forms["commentForm"]["content"].value;
+
+  console.log(comment);
+
+  if (comment.trim() == "") {
+    alert("Comment cannot be empty");
+    return false;
+  }
+}
+
 function validateNumber() {
   const square = document.getElementById("square");
 
