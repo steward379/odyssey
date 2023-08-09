@@ -33,6 +33,23 @@ function validateNumber() {
   window.location.href = "/squared/" + squareNum;
   return false;
 }
+
+function confirmDelete(commentId) {
+  if (confirm("確定要刪除這條留言嗎？")) {
+    let form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/deleteMessage";
+
+    let input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "comment_id";
+    input.value = commentId;
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+  }
+}
+
 window.onload = function () {
   const signInForm = document.querySelector(".sign-in-form");
   const squareForm = document.querySelector(".square-form");

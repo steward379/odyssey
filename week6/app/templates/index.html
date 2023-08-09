@@ -20,62 +20,47 @@
   {% block content %}
   <!-- {% set username_str = "my" %} -->
   <main class="container-fluid">
-    <div class="sign-in-n-up sign-in-form">
-      <form name="signInForm" class="sign-in-form sign-up-n-in" data-text="Sign-In" action="{{ url_for("sign_in") }}" onsubmit="return validateSignInForm()" method="POST">
-        <!-- <form action="signIn" onsubmit="return validateForm()" method="post"> -->
-        <h2 class="sign-in-h2 h2 mb-3 font-weight-normal"> 😶‍🌫️ Sign In 登入</h2>
-        <span class="text-to-show"> 🫠 Sign In/Up</span>
-        <div class="form-group">
-          <label for="username">Username 帳號:</label>
-          <input type="text" id="username" name="username">
-        </div>
-        <div class="form-group">
-          <label for="password">Password 密碼:</label>
-          <input type="password" id="password" name="password">
-        </div>
-        <div>
-          <input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox">同意<a href="https://policies.google.com/terms?hl=zh-TW">使用政策</a>與
-            <a href="https://gist.github.com/poychang/f413c489b15e4af4e11197dc617f32d2">隱私權條款</a></label>
-        </div>
-        <input class="sign-out-btn pink-btn btn btn-lg btn-primary" type="submit" value="Sign In 登入">
-      </form>
-      <form name="signupForm" class="sign-in-n-up sign-in-form" data-text="Sign-Up" action="{{ url_for("sign_up") }}" onsubmit="return validateSignUpForm()" method="POST">
-        <!-- <form action="signIn" onsubmit="return validateForm()" method="post"> -->
-        <h2 class="mb-3 font-weight-normal"> 🥴🫵 Sign Up 註冊</h2>
-        <div class="form-group">
-          <label for="name">Name 姓名:</label>
-          <input type="text" id="name" name="name">
-        </div>
-        <div class="form-group">
-          <label for="username">Username 帳號:</label>
-          <input type="text" id="username" name="username">
-        </div>
-        <div class="form-group">
-          <label for="password">Password 密碼:</label>
-          <input type="password" id="password" name="password">
-        </div>
-        <div>
-          <input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox">同意<a href="https://policies.google.com/terms?hl=zh-TW">使用政策</a>與
-            <a href="https://gist.github.com/poychang/f413c489b15e4af4e11197dc617f32d2">隱私權條款</a></label>
-        </div>
-        <input class="sign-out-btn pink-btn btn btn-lg btn-primary" type="submit" value="Sign Up 註冊">
-      </form>
+    <form class="sign-in-form" name="signInForm" data-text="Sign-In" action="{{ url_for("sign_in") }}" onsubmit="return validateSignInForm()" method="POST">
+      <!-- <form action="signIn" onsubmit="return validateForm()" method="post"> -->
+      <span class="text-to-show"> 🫠 來登入 Sign In</span>
+      <h2 class="sign-in-h2 h2 mb-3 font-weight-normal"> 😶‍🌫️ Sign In</h2>
       <div class="form-group">
-        <video width=500px" src="{{ url_for("static", filename="discord-gif.mp4") }}"></video>
+        <label for="username">Username 帳號:</label>
+        <input type="text" id="username" name="username">
       </div>
-    </div>
-
-    <form class="square-form" data-text="Square" onsubmit="event.preventDefault(); return validateNumber()" method="POST">
-      <h4 class="sign-in-h2 h4 mb-3 font-weight-normal"> 🤖 Square </h4>
-      <span class="text-to-show">🤖 Square</span>
       <div class="form-group">
-        <label style=" color: white" for="square">type an integer above 0:</label>
-        <input type="number" id="square" name="square-num">
+        <label for="password">Password 密碼:</label>
+        <input type="password" id="password" name="password">
       </div>
-      <input class="sign-out-btn purple-btn btn btn-lg btn-secondary" type="submit" value="Calculate">
+      <div>
+        <input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox">同意<a href="https://policies.google.com/terms?hl=zh-TW">使用政策</a>與
+          <a href="https://gist.github.com/poychang/f413c489b15e4af4e11197dc617f32d2">隱私權條款</a></label>
+      </div>
+      <input class="sign-out-btn pink-btn btn btn-lg btn-primary" type="submit" value="Sign In 登入">
+    </form>
+    <form class="square-form sign-in-form" style=" color: white" name="signupForm" data-text="Sign-Up" action="{{ url_for("sign_up") }}" onsubmit="return validateSignUpForm()" method="POST">
+      <!-- <form action="signIn" onsubmit="return validateForm()" method="post"> -->
+      <span class="text-to-show"> 🥵 快註冊 Sign Up</span>
+      <h2 class="sign-in-h2 h2 mb-3 font-weight-normal"> 🫵 Sign Up </h2>
+      <div class="form-group">
+        <label for="name">Name 姓名:</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="username">Username 帳號:</label>
+        <input type="text" id="username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password 密碼:</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <div>
+        <input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox">同意<a href="https://policies.google.com/terms?hl=zh-TW">使用政策</a>與
+          <a href="https://gist.github.com/poychang/f413c489b15e4af4e11197dc617f32d2">隱私權條款</a></label>
+      </div>
+      <input class="sign-out-btn purple-btn btn btn-lg btn-secondary" type="submit" value="Sign Up 註冊">
     </form>
   </main>
-  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
   <!-- <script>
     function validateForm() {
       const checkBox = document.getElementById("checkbox");

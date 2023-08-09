@@ -39,6 +39,28 @@
         orc-button
     {% else %}{% endif %}" href="{{ url_for("sign_out") }}">Sign Out 登出</a>
   </div>
+  <h2 class="h2 mb-3 font-weight-normal">快來留言吧!</h2>
+
+  <form action="/createMessage" method="post">
+    <input type="text" name="content" placeholder="留言內容">
+    <input type="submit" value="送出">
+  </form>
+
+  <h2 class="congrats">留言版</h2>
+  <ul class="member container text-center">
+    {% for comment in comments %}
+    <li>
+      <b>
+        {{ comment.member.name }} : </b>
+      {{ comment.content }}
+      <small style="color: burlywood">(
+        {{ comment.time.strftime('%Y-%m-%d %H:%M:%S') }})</small>
+      {% if comment.member_id == session.user_id %}
+      <button onclick="confirmDelete({{ comment.id }})">💩</button>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
   {% endblock %}
   <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>

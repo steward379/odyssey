@@ -24,30 +24,14 @@
 <body>
   {% block content %}
   <form class="square-form" data-text="Square" onsubmit="event.preventDefault(); return validateNumber()" method="POST">
-    <h4 class="sign-in-h2 h4 mb-3 font-weight-normal"> 🤖 Square </h4>
     <span class="text-to-show">🤖 Square</span>
+    <h4 class="sign-in-h2 h4 mb-3 font-weight-normal"> 🤖 Square </h4>
     <div class="form-group">
       <label style=" color: white" for="square">type an integer above 0:</label>
       <input type="number" id="square" name="square-num">
     </div>
     <input class="sign-out-btn purple-btn btn btn-lg btn-secondary" type="submit" value="Calculate">
   </form>
-  <div class="square-btn sign-out-btn">
-    <h2 class="square-num display-4">
-      {{ squared }}
-    </h2>
-    <div class="original-num">
-      {{ integer }}
-    </div>
-    <div class="square">
-      {% for img_url in image_urls %}
-      <div>
-        <img class="img-fluid" src="{{ img_url }}" alt="Digit image">
-      </div>
-      {% endfor %}
-    </div>
-    <p class="mt-4">Image by <a href="https://www.freepik.com/free-vector/hand-drawn-mathematical-symbols_11350317.htm#query=numbers%20svg&position=6&from_view=keyword&track=ais">Freepik</a></p>
-  </div>
   {% endblock %}
   <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>

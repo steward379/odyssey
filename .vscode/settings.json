@@ -1,8 +1,6 @@
 {
-    "cSpell.words": [
-        "metaline",
-        "nrec",
-        "stitle",
-        "xbody"
-    ]
+    "html.autoClosingTags": false,
+    "html.format.indentHandlebars": true,
+    "html.format.templating": true,
+    "markdown.extension.print.onFileSave": false
 }
