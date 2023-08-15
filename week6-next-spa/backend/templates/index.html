@@ -1,0 +1,118 @@
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+{% extends "template.html" %}
+<html lang="zh-TW" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %} index {% endblock %}</title>
+  <meta name="description" content="flask app">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="/scripts/style.css"> -->
+  <!-- <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"> -->
+</head>
+
+<body>
+  {% block content %}
+  <!-- {% set username_str = "my" %} -->
+  <main class="container-fluid">
+    <form class="sign-in-form" name="signInForm" data-text="Sign-In" action="{{ url_for("sign_in") }}" onsubmit="return validateSignInForm()" method="POST">
+      <!-- <form action="signIn" onsubmit="return validateForm()" method="post"> -->
+      <span class="text-to-show"> 🫠 來登入 Sign In</span>
+      <h2 class="sign-in-h2 h2 mb-3 font-weight-normal"> 😶‍🌫️ Sign In</h2>
+      <div class="form-group">
+        <label for="username">Username 帳號:</label>
+        <input type="text" id="username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password 密碼:</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <div>
+        <input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox">同意<a href="https://policies.google.com/terms?hl=zh-TW">使用政策</a>與
+          <a href="https://gist.github.com/poychang/f413c489b15e4af4e11197dc617f32d2">隱私權條款</a></label>
+      </div>
+      <input class="sign-out-btn pink-btn btn btn-lg btn-primary" type="submit" value="Sign In 登入">
+    </form>
+    <form class="square-form sign-in-form" style=" color: white" name="signupForm" data-text="Sign-Up" action="{{ url_for("sign_up") }}" onsubmit="return validateSignUpForm()" method="POST">
+      <!-- <form action="signIn" onsubmit="return validateForm()" method="post"> -->
+      <span class="text-to-show"> 🥵 快註冊 Sign Up</span>
+      <h2 class="sign-in-h2 h2 mb-3 font-weight-normal"> 🫵 Sign Up </h2>
+      <div class="form-group">
+        <label for="name">Name 姓名:</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="username">Username 帳號:</label>
+        <input type="text" id="username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password 密碼:</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <div>
+        <input type="checkbox" id="checkbox" name="checkbox"><label for="checkbox">同意<a href="https://policies.google.com/terms?hl=zh-TW">使用政策</a>與
+          <a href="https://gist.github.com/poychang/f413c489b15e4af4e11197dc617f32d2">隱私權條款</a></label>
+      </div>
+      <input class="sign-out-btn purple-btn btn btn-lg btn-secondary" type="submit" value="Sign Up 註冊">
+    </form>
+  </main>
+  <!-- <script>
+    function validateForm() {
+      const checkBox = document.getElementById("checkbox");
+
+      if (!checkBox.checked) {
+        alert("Please check the checkbox first");
+      }
+      return checkBox.checked ? true : false;
+    }
+
+    function validateNumber() {
+      const square = document.getElementById("square");
+
+      const squareNum = square.value;
+
+      if (!/^\d+$/.test(squareNum) || parseInt(squareNum) <= 0) {
+        alert("Please enter a positive number");
+        return false;
+      }
+      window.location.href = "/squared/" + squareNum;
+      return false;
+    }
+    window.onload = function() {
+      const signInForm = document.querySelector(".sign-in-form");
+      const squareForm = document.querySelector(".square-form");
+
+      console.log(signInForm);
+      console.log(squareForm);
+
+      signInForm.addEventListener("mouseover", function() {
+        signInForm.classList.add("hovered");
+        squareForm.classList.add("unhovered");
+      });
+      signInForm.addEventListener("mouseout", function() {
+        signInForm.classList.remove("hovered");
+        squareForm.classList.remove("unhovered");
+      });
+      squareForm.addEventListener("mouseover", function() {
+        squareForm.classList.add("hovered");
+        signInForm.classList.add("unhovered");
+      });
+      squareForm.addEventListener("mouseout", function() {
+        squareForm.classList.remove("hovered");
+        signInForm.classList.remove("unhovered");
+      });
+    };
+  </script> -->
+  {% endblock %}
+  <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  <script src="" async defer></script>
+</body>
+
+</html>

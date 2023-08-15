@@ -1,0 +1,71 @@
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+{% extends "template.html" %}
+<html lang="zh-TW" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %} member
+    {{ username }} {% endblock %}
+  </title>
+  <meta name="description" content="flask app">
+  <!-- <link rel="stylesheet" href="/scripts/style.css"> -->
+  <!-- <link rel="icon" href="{{ url_for("static", filename='favicon.ico') }}"> -->
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"> -->
+</head>
+
+<body>
+  {% block content %}
+  <!-- {% set username_str = username + "'s" %} -->
+  <div class="member container text-center">
+    <h2 class="{% if username == 'orc' %}
+                        orc-style-congrats {% elif username == 'admin' %} admin-congrats
+                    {% else %}congrats{% endif %}">
+      Congrats! 👉
+      {{ name }} 👈 😆
+    </h2>
+    {% if username in user_image_map %}
+    <img class="img-fluid" src="{{ user_image_map[username] }}" alt="User Image">
+    {% endif %}
+    {% if username not in user_image_map %}
+    <span> why not try 'orc' and 'admin' as username and type-in the same word as password?</span>
+    {% endif %}
+    <a class="sign-out-btn btn-lg my-4 {% if username == 'orc' %}
+        orc-button
+    {% else %}{% endif %}" href="{{ url_for("sign_out") }}">Sign Out 登出</a>
+  </div>
+  <h2 class="h2 mb-3 font-weight-normal">快來留言吧!</h2>
+
+  <form name="commentForm" action="/createMessage" onsubmit="return validateCommentForm()" method="POST">
+    <input type="text" name="content" placeholder="留言內容">
+    <input type="submit" value="送出">
+  </form>
+
+  <h2 class="congrats">留言版</h2>
+  <ul class="member container text-center">
+    {% for comment in comments %}
+    <li>
+      <b>
+        {{ comment.member.name }} : </b>
+      {{ comment.content }}
+      <small style="color: burlywood">(
+        {{ comment.time.strftime('%Y-%m-%d %H:%M:%S') }})</small>
+      {% if comment.member_id == session.user_id %}
+      <button onclick="confirmDelete({{ comment.id }})">💩</button>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endblock %}
+  <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  <!-- <script src="" async defer></script> -->
+</body>
+
+</html>
