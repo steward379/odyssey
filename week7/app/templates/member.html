@@ -41,14 +41,14 @@
   </div>
 
   <div>
-    <h3 class="h2 mb-3 font-weight-normal">輸入會員帳號：</h3>
+    <h3 class="h2 mb-3 font-weight-normal">查詢會員帳號：</h3>
     <input type="text" id="username_search" placeholder="搜尋...">
     <button onclick="searchMember()">查詢</button>
     <div id="memberInfo"></div>
   </div>
 
   <div>
-    <h2>更新我的姓名</h2>
+    <h2>修改我的姓名</h2>
     <input type="text" id="newName" placeholder="輸入新的姓名">
     <button onclick="updateName()">更新</button>
     <div id="updateStatus"></div>
@@ -56,15 +56,16 @@
 
   <h2 class="h2 mb-3 font-weight-normal">快來留言吧!</h2>
 
-  <form name="commentForm" action="/createMessage" onsubmit="return validateCommentForm()" method="POST">
+  <!-- <form name="commentForm" action="/createMessage" onsubmit="return validateCommentForm()" method="POST"> -->
+  <form name="commentForm" onsubmit="return postComment(event); return false" method="POST">
     <input type="text" name="content" placeholder="留言內容">
     <input type="submit" value="送出">
   </form>
 
   <h2 class="congrats">留言版</h2>
 
-  <ul class="member container text-center">
-    {% for comment in comments %}
+  <ul class="bulletin container text-left" style="list-style: none;">
+    <!-- {% for comment in comments %}
     <li>
       <b>
         {{ comment.member.name }} : </b>
@@ -72,11 +73,20 @@
       <small style="color: burlywood">(
         {{ comment.time.strftime('%Y-%m-%d %H:%M:%S') }})</small>
       {% if comment.member_id == session.user_id %}
-      <button onclick="confirmDelete({{ comment.id }})">💩</button>
+      <button onclick="deleteComment({{ comment.id }})">💩</button>
       {% endif %}
     </li>
-    {% endfor %}
+    {% endfor %} -->
   </ul>
+  <button id="loadMoreBtn">載入更多</button>
+  <div id="pagination"></div>
+  <div>
+    跳轉到：<input type="number" id="jumpToPage" min="1"> <button onclick="jumpToSpecifiedPage()">跳轉</button>
+  </div>
+  <div style="margin-bottom: 100px;"></div>
+  <!-- <script>
+    let userId = "{{ user_id }}";
+  </script> -->
   {% endblock %}
   <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>

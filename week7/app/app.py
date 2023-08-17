@@ -10,22 +10,9 @@ from flask_sqlalchemy import SQLAlchemy
 current_path = pathlib.Path(__file__).parent.absolute()
 
 load_dotenv(dotenv_path = current_path.parent / ".env")
-# production
-# import MySQLdb
-
-# connection = MySQLdb.connect(
-#   host= os.getenv("HOST"),
-#   user=os.getenv("USERNAME"),
-#   passwd= os.getenv("PASSWORD"),
-#   db= os.getenv("DATABASE"),
-#   autocommit = True,
-#   ssl_mode = "VERIFY_IDENTITY",
-#   ssl      = {
-#     "ca": "/etc/ssl/cert.pem"
-#   }
-# )
 
 # production
+
 # import pymysql
 
 # pymysql.install_as_MySQLdb()
@@ -124,6 +111,8 @@ def sign_in():
             return redirect(url_for('member'))
         else:
             return redirect(url_for("error", message="2: 帳密錯誤 Wrong username or password"))
+    else:
+        return redirect(url_for("error", message="3: 帳密錯誤 Wrong username or password"))
 
 @app.route("/signUp", methods=["POST"])
 def sign_up():
@@ -155,42 +144,62 @@ def member():
         return redirect(url_for("home"))
 
     comments = Comment.query.order_by(Comment.time.desc()).all()
-    username, name = session.get("username", "你是不是沒註冊啊"), session.get("name", "你還沒註冊吧哪有取名")
     
-    return render_template("member.html", username=username, name=name, comments=comments, user_image_map=g.USER_IMAGE_MAP)
+    username, name, user_id = session.get("username", "你是不是沒註冊啊"), session.get("name", "你還沒註冊吧哪有取名"), session.get("user_id", "id error")
+    
+    return render_template("member.html", username=username, name=name, comments=comments, user_image_map=g.USER_IMAGE_MAP, user_id=user_id)
 
 @app.route("/createMessage", methods=["POST"])
 def create_message():
-    content = request.form.get("content")
+    # content = request.form.get("content")
+    content = request.json.get("content")
     user_id = session.get("user_id")
 
     if not content or content.strip() == "":
-        return redirect(url_for("error", message="10 Please enter content"))
+        # return redirect(url_for("error", message="10 Please enter content"))
+          return jsonify({"error": "Please enter content"}), 400
     elif content and user_id:
         comment = Comment(content=content, member_id=user_id, like_count = 0)
         db.session.add(comment)
         db.session.commit()
-        return redirect(url_for("member"))
-    elif not user_id:
-        return redirect(url_for("error", message="3: Please sign in first"))
+        # return redirect(url_for("member"))
+        return jsonify({
+            "message": "Comment added", 
+            "comment": {
+                "id": comment.id,
+                "member_name": comment.member.name,
+                "content": comment.content,
+                "member_id": comment.member_id,
+                "time": comment.time.strftime('%Y-%m-%d %H:%M:%S')
+            }
+        })
+    # elif not user_id:
+    #     return redirect(url_for("error", message="3: Please sign in first"))
     else:
-        return redirect(url_for("error", message="0 unknown error"))
+        # return redirect(url_for("error", message="0 unknown error"))
+        return jsonify({"error": "unknown error"}), 400
 
 @app.route('/deleteMessage', methods=['POST'])
 def delete_message():
-    comment_id = request.form.get('comment_id')
+    # comment_id = request.form.get('comment_id')
+    comment_id = request.json.get('comment_id') 
     comment = Comment.query.get(comment_id)
     user_id = session.get('user_id')
 
     if comment and comment.member_id == user_id :
         db.session.delete(comment)
         db.session.commit()
+        # 
+        return jsonify({"message": "Comment deleted"})
     elif not user_id:
-        return redirect(url_for("error", message="3: Please sign in first"))
+        # return redirect(url_for("error", message="3: Please sign in first"))
+        return jsonify({"error": "Please sign in first"}), 401
     elif not comment:
-        return redirect(url_for("error", message="11: Comment not found"))
+        # return redirect(url_for("error", message="11: Comment not found"))
+        return jsonify({"error": "Comment not found"}), 404
     
-    return redirect(url_for('member'))
+    # return redirect(url_for('member'))
+    return jsonify({"error": "unknown error"}), 400
 
 @app.route("/signOut")
 def sign_out():
@@ -236,7 +245,90 @@ def api_member():
         return jsonify(response_data)
     else:
         return jsonify(data = None), 404  
+    
+@app.route("/api/getUserId", methods=["GET"])
+def get_user_id():
+    # 从 session 中获取 user_id
+    user_id = session.get("user_id")
+    if user_id:
+        return jsonify({"user_id": user_id})
+    else:
+        return jsonify({"error": "User not signed in."}), 401  # 401 Unauthorized
+    
 
+
+@app.route("/api/getComments", methods=["GET"])
+def get_comments():
+    page = int(request.args.get("page", 1))
+    items_per_page = 30
+
+    # comments = Comment.query.order_by(Comment.time.desc()).all()
+    pagination = Comment.query.order_by(Comment.time.desc()).paginate(page=page, per_page=items_per_page, error_out=False)
+    comments = pagination.items
+    
+    comments_data = [{
+        "id": comment.id,
+        "content": comment.content,
+        "time": comment.time.strftime('%Y-%m-%d %H:%M:%S'),
+        "member_id": comment.member_id,
+        "member_name": comment.member.name
+    } for comment in comments]
+
+    pagination_data = {
+        "current_page": pagination.page,
+        "total_pages": pagination.pages,
+        "has_next": pagination.has_next,
+        "has_prev": pagination.has_prev,
+        "comments": comments_data
+    }
+    # return jsonify(comments_data)  
+    return jsonify(pagination_data)
+    
+@app.route("/api/member", methods=["PATCH"])
+def patch_member_name():
+    if not session.get("signed_in"):
+        return jsonify(error=True), 403
+
+    data = request.json
+
+    new_name = data.get("name", "").strip()
+    print(new_name)
+    # if not new_name or not valid_name(new_name):
+    if not new_name:
+        return jsonify(error=True), 400
+
+    current_member = Member.query.get(session.get("user_id"))
+
+    if current_member:
+        current_member.name = new_name
+        session["name"] = new_name
+        db.session.commit()
+        return jsonify(ok=True)
+    else:
+        return jsonify(error=True), 404
+    
+    
+    
+# @app.route("/api/createMessage", methods=["POST"])
+# def create_message():
+#     content = request.form.get("content")
+#     user_id = session.get("user_id")
+
+#     if not content or content.strip() == "":
+#         return jsonify(status="error", message="Please enter content"), 400
+#     elif content and user_id:
+#         comment = Comment(content=content, member_id=user_id, like_count=0)
+#         db.session.add(comment)
+#         db.session.commit()
+#         return jsonify(status="success", message="Comment added successfully", comment_id=comment.id), 200
+#     elif not user_id:
+#         return jsonify(status="error", message="Please sign in first"), 400
+#     else:
+#         return jsonify(status="error", message="Unknown error"), 400
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=3000, threaded=True)
 
 # def valid_name(name):
 #     # return re.match("^[A-Za-z0-9 ]+$", name) is not None
@@ -256,29 +348,3 @@ def api_member():
 #         if char in name:
 #             return False
 #     return True
-
-
-@app.route("/api/member", methods=["PATCH"])
-def patch_member_name():
-    if not session.get("signed_in"):
-        return jsonify(error=True), 403
-
-    data = request.json
-
-    new_name = data.get("name", "").strip()
-    print(new_name)
-    # if not new_name or not valid_name(new_name):
-    if not new_name:
-        return jsonify(error=True), 400
-
-    current_member = Member.query.get(session.get("user_id"))
-
-    if current_member:
-        current_member.name = new_name
-        db.session.commit()
-        return jsonify(ok=True)
-    else:
-        return jsonify(error=True), 404
-
-if __name__ == "__main__":
-    app.run(debug=True, port=3000, threaded=True)

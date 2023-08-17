@@ -16,10 +16,12 @@ def create_app():
 
     app = Flask(__name__)
     
+    # Allow cross-origin requests, but in production, limit this to just the domain of your Next.js app.
     CORS(app)
 
     app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
     app.config["SECRET_KEY"] = SECRET_KEY 
 
     db.init_app(app)

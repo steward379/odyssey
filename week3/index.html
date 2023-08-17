@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Week 1</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" user-scalable=1><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" user-scalable=1>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="./style.css">
 
 </head>
+
 <body>
   <header>
     <nav>
-        <h1><b> MyWebsite </b></h1>
-        <input type="checkbox" id="hamburger-menu-click" />
-        <label for="hamburger-menu-click" class="hamburger-menu-label">
-          <svg class="hamburger-menu" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-            <svg class="xmark" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-          
-  <!--           <div class="nav-list-accordion"></div> -->
-          
+      <h1><b> MyWebsite </b></h1>
+      <input type="checkbox" id="hamburger-menu-click" />
+      <label for="hamburger-menu-click" class="hamburger-menu-label">
+        <svg class="hamburger-menu" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+          <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+        </svg>
+        <svg class="xmark" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+        </svg>
+
+        <!--           <div class="nav-list-accordion"></div> -->
+
       </label>
       <ul class="nav-list">
-          <li class="nav-item">item 1</li>
-          <li class="nav-item">item 2</li>
-          <li class="nav-item">item 3</li>
-          <li class="nav-item">item 4</li>
+        <li class="nav-item">item 1</li>
+        <li class="nav-item">item 2</li>
+        <li class="nav-item">item 3</li>
+        <li class="nav-item">item 4</li>
       </ul>
     </nav>
   </header>
@@ -64,176 +71,178 @@
       </ul> 
     </main> -->
   </div>
-  <footer><span>Wehelp Camp Week1</span> 
+  <footer><span>Wehelp Camp Week1</span>
   </footer>
   <script>
-    
-  fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json")
-    .then(response => response.json())
-    .then(data => createElements(data));
+    fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json")
+      .then(response => response.json())
+      .then(data => createElements(data));
 
-  let showMore = false;
-  let attractionsMore = 0;
+    let showMore = false;
+    let attractionsMore = 0;
 
-  function createElements(data) {
-  
-    const attractions = data["result"]["results"];
-    console.log(attractions.length);
+    function createElements(data) {
 
-    const container = document.querySelector(`.container`);
+      const attractions = data["result"]["results"];
+      console.log(attractions.length);
 
-    initialize(container);
+      const container = document.querySelector(`.container`);
 
-    const mainElement = document.querySelector(`main`);
+      initialize(container);
 
-    for (let i = 0; i < 15 + attractionsMore; i++) {
-      if ( i < 3) {
-        thumbnailGenerate(i, attractions);
-      }else if( i < 15){
-        let liProfile = document.querySelector(`.profile-li-${i-2}`); 
-        profileGenerate(i, attractions, liProfile);
+      const mainElement = document.querySelector(`main`);
+
+      for (let i = 0; i < 15 + attractionsMore; i++) {
+        if (i < 3) {
+          thumbnailGenerate(i, attractions);
+        } else if (i < 15) {
+          let liProfile = document.querySelector(`.profile-li-${i-2}`);
+          profileGenerate(i, attractions, liProfile);
+          showMore = true;
+        }
+      }
+      const thumbnail = document.querySelector(`.photo-thumbnail`);
+      const profile = document.querySelector(`.photo-profile`);
+
+      if (showMore === true) {
+        showMoreGenerate(mainElement);
+      }
+      const buttonElementMore = document.querySelector(`button`);
+      const maxMoreView = 12;
+      const attractionsLength = attractions.length;
+      //12+3, 12+12+3, 12+12+12+3, 12*4+3, ~ +7
+
+      buttonElementMore.addEventListener("click", function() {
+        if ((attractionsLength - (15 + attractionsMore)) > maxMoreView) {
+          attractionsMore += maxMoreView;
+          createElementsMore(data, maxMoreView);
+        } else if ((attractionsLength - (15 + attractionsMore)) < maxMoreView) {
+          let remainingView = attractionsLength - (15 + attractionsMore);
+          createElementsMore(data, remainingView);
+          buttonElementMore.style.display = "none";
+        }
+      });
+    }
+
+    function createElementsMore(data, maxMoreView) {
+
+      const attractions = data["result"]["results"];
+
+      for (let i = attractionsMore + 3; i < attractionsMore + 3 + maxMoreView; i++) {
+
+        let ulProfile = document.querySelector(`.photo-profile`);
+
+        let newProfileList = document.createElement("li");
+        newProfileList.className = `profile-li profile-li-${i-2}`;
+
+        ulProfile.appendChild(newProfileList);
+
+        profileGenerate(i, attractions, newProfileList);
+
         showMore = true;
+        // newProfileList.appendChild(divElement);
       }
     }
-    const thumbnail = document.querySelector(`.photo-thumbnail`); 
-    const profile = document.querySelector(`.photo-profile`);
 
-    if(showMore===true){ 
-      showMoreGenerate(mainElement); 
-    }
-    const buttonElementMore = document.querySelector(`button`);
-    const maxMoreView = 12;
-    const attractionsLength = attractions.length;
-    //12+3, 12+12+3, 12+12+12+3, 12*4+3, ~ +7
+    function initialize(container) {
 
-    buttonElementMore.addEventListener("click", function() {
-      if((attractionsLength - (15 + attractionsMore)) > maxMoreView){
-        attractionsMore += maxMoreView;
-        createElementsMore(data, maxMoreView);
-      }else if((attractionsLength - (15 + attractionsMore)) < maxMoreView){
-        let remainingView = attractionsLength - (15 + attractionsMore);
-        createElementsMore(data, remainingView);
-        buttonElementMore.style.display = "none";
-      } 
-    });
-}
+      let mainElement = document.createElement(`main`);
 
-function createElementsMore(data, maxMoreView){
+      let ulThumbnail = document.createElement(`ul`);
+      ulThumbnail.className = `photo-thumbnail`;
 
-  const attractions = data["result"]["results"];
+      let ulProfile = document.createElement(`ul`);
+      ulProfile.className = `photo-profile`;
 
-  for (let i = attractionsMore + 3 ; i < attractionsMore + 3 + maxMoreView; i++) {
+      for (let i = 0; i < 3; i++) {
+        let liThumbnail = document.createElement(`li`);
+        liThumbnail.className = `thumbnail-li thumbnail-li-${i+1}`;
+        ulThumbnail.appendChild(liThumbnail);
+      }
 
-    let ulProfile = document.querySelector(`.photo-profile`);
+      for (let i = 0; i < 12; i++) {
+        let liProfile = document.createElement(`li`);
+        liProfile.className = `profile-li profile-li-${i+1}`;
+        ulProfile.appendChild(liProfile);
+      }
 
-    let newProfileList  = document.createElement("li");
-    newProfileList.className = `profile-li profile-li-${i-2}`; 
-
-    ulProfile.appendChild(newProfileList);
-
-    profileGenerate(i, attractions, newProfileList);
-
-    showMore = true;
-    // newProfileList.appendChild(divElement);
-  }
-}
-
-function initialize (container) {
-
-    let mainElement = document.createElement(`main`);
-
-    let ulThumbnail = document.createElement(`ul`);
-    ulThumbnail.className = `photo-thumbnail`;
-    
-    let ulProfile = document.createElement(`ul`);
-    ulProfile.className = `photo-profile`;
-
-    for( let i = 0; i < 3; i++){
-      let liThumbnail = document.createElement(`li`);
-      liThumbnail.className = `thumbnail-li thumbnail-li-${i+1}`;
-      ulThumbnail.appendChild(liThumbnail);
-    }
-    
-    for ( let i = 0; i < 12; i++){
-      let liProfile = document.createElement(`li`);
-      liProfile.className = `profile-li profile-li-${i+1}`;
-      ulProfile.appendChild(liProfile);
+      container.appendChild(mainElement);
+      mainElement.appendChild(ulThumbnail);
+      mainElement.appendChild(ulProfile);
     }
 
-    container.appendChild(mainElement);
-    mainElement.appendChild(ulThumbnail);
-    mainElement.appendChild(ulProfile);
-}
+    function thumbnailGenerate(i, attractions) {
 
-function thumbnailGenerate(i, attractions){
+      let liThumbnail = document.querySelector(`.thumbnail-li-${i+1}`);
 
-  let liThumbnail = document.querySelector(`.thumbnail-li-${i+1}`); 
+      let imgElement = document.createElement("img");
+      imgElement.src = "https://" + attractions[i].file.split('https://')[1];
+      console.log("thumbnail-img", imgElement.src);
+      imgElement.alt = "thumbnail" + {
+        i
+      };
+      imgElement.className = "thumbnail-img";
 
-  let imgElement = document.createElement("img");
-  imgElement.src = "https://" + attractions[i].file.split('https://')[1]; 
-  console.log("thumbnail-img", imgElement.src);
-  imgElement.alt = "thumbnail"+{i};
-  imgElement.className = "thumbnail-img";
+      let divElement = document.createElement("div");
+      divElement.className = `thumbnail-title thumbnail-title-${i+1}`;
 
-  let divElement = document.createElement("div");
-  divElement.className = `thumbnail-title thumbnail-title-${i+1}`;
+      let spanElement = document.createElement("span");
+      spanElement.textContent = attractions[i].stitle;
 
-  let spanElement = document.createElement("span");
-  spanElement.textContent = attractions[i].stitle;
+      liThumbnail.appendChild(imgElement);
+      liThumbnail.appendChild(divElement);
+      divElement.appendChild(spanElement);
+    }
 
-  liThumbnail.appendChild(imgElement);
-  liThumbnail.appendChild(divElement);
-  divElement.appendChild(spanElement);
-}
+    function profileGenerate(i, attractions, newProfileList) {
 
-function profileGenerate(i, attractions, newProfileList){
+      let divElement = document.createElement("div");
+      divElement.className = `profile-img profile-img-${i-2}`;
 
-  let divElement = document.createElement("div");
-  divElement.className = `profile-img profile-img-${i-2}`;
+      let imgElement = document.createElement("img");
+      imgElement.src = "https://" + attractions[i].file.split('https://')[1]; // 使用 JSON 資料中的圖片 URL
+      console.log("profile-img", imgElement.src);
+      imgElement.alt = `profile-img-${i-2}`;
+      imgElement.className = "main";
 
-  let imgElement = document.createElement("img");
-  imgElement.src = "https://" + attractions[i].file.split('https://')[1];  // 使用 JSON 資料中的圖片 URL
-  console.log("profile-img", imgElement.src);
-  imgElement.alt = `profile-img-${i-2}`;
-  imgElement.className = "main";
+      let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svgElement.setAttribute("class", "star");
+      svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      svgElement.setAttribute("fill", "white");
+      svgElement.setAttribute("height", "1.5em");
+      svgElement.setAttribute("viewBox", "0 0 576 512");
 
-  let svgElement = document.createElementNS( "http://www.w3.org/2000/svg","svg");
-  svgElement.setAttribute("class", "star");
-  svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-  svgElement.setAttribute("fill", "white");
-  svgElement.setAttribute("height", "1.5em");
-  svgElement.setAttribute("viewBox", "0 0 576 512");
+      let pathElement = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      pathElement.setAttribute('d',
+        'M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z'
+      );
 
-  let pathElement = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  pathElement.setAttribute('d', 
-      'M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z'
-  );
+      let divElementTitle = document.createElement("div");
+      divElementTitle.className = `profile-title profile-title-${i-2}`;
 
-  let divElementTitle = document.createElement("div");
-  divElementTitle.className = `profile-title profile-title-${i-2}`;
+      let spanElement = document.createElement("span");
+      spanElement.textContent = attractions[i].stitle;
 
-  let spanElement = document.createElement("span");
-  spanElement.textContent = attractions[i].stitle;
+      newProfileList.appendChild(divElement);
+      divElement.appendChild(imgElement);
+      divElement.appendChild(svgElement);
+      svgElement.appendChild(pathElement);
+      divElement.appendChild(divElementTitle);
+      divElementTitle.appendChild(spanElement);
+    }
 
-  newProfileList.appendChild(divElement);
-  divElement.appendChild(imgElement);
-  divElement.appendChild(svgElement);
-  svgElement.appendChild(pathElement);
-  divElement.appendChild(divElementTitle);
-  divElementTitle.appendChild(spanElement);
-}
+    function showMoreGenerate(mainElement) {
 
-function showMoreGenerate(mainElement){
+      let buttonElementMore = document.createElement("button");
+      buttonElementMore.className = `more`;
 
-  let buttonElementMore = document.createElement("button");
-  buttonElementMore.className = `more`;
+      let spanElementMore = document.createElement("span");
+      spanElementMore.textContent = "show more";
 
-  let spanElementMore = document.createElement("span");
-  spanElementMore.textContent = "show more";
-    
-  mainElement.appendChild(buttonElementMore);
-  buttonElementMore.appendChild(spanElementMore);
-}
-</script>
+      mainElement.appendChild(buttonElementMore);
+      buttonElementMore.appendChild(spanElementMore);
+    }
+  </script>
 </body>
+
 </html>
